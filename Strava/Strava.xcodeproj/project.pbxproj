@@ -1,0 +1,636 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A5432E7A1E1068C2003196D5 /* StravaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E791E1068C2003196D5 /* StravaTests.swift */; };
+		A5432E7C1E1068C2003196D5 /* Strava.h in Headers */ = {isa = PBXBuildFile; fileRef = A5432E6E1E1068C1003196D5 /* Strava.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5432E8D1E106CAC003196D5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5432E8A1E106CAC003196D5 /* Alamofire.framework */; };
+		A5432E8E1E106CAC003196D5 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5432E8B1E106CAC003196D5 /* AlamofireObjectMapper.framework */; };
+		A5432E8F1E106CAC003196D5 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5432E8C1E106CAC003196D5 /* ObjectMapper.framework */; };
+		A5432E941E106F92003196D5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E651E1068A4003196D5 /* Utils.swift */; };
+		A5432E961E106F92003196D5 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E541E1068A4003196D5 /* Network.swift */; };
+		A5432E971E106F92003196D5 /* StravaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E611E1068A4003196D5 /* StravaClient.swift */; };
+		A5432E981E106F92003196D5 /* StravaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E621E1068A4003196D5 /* StravaObject.swift */; };
+		A5432E991E106F92003196D5 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E3E1E1068A4003196D5 /* Activity.swift */; };
+		A5432E9A1E106F92003196D5 /* ActivitySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E3F1E1068A4003196D5 /* ActivitySummary.swift */; };
+		A5432E9B1E106F92003196D5 /* ActivityUploadStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E401E1068A4003196D5 /* ActivityUploadStatus.swift */; };
+		A5432E9C1E106F92003196D5 /* ActivityUploadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E411E1068A4003196D5 /* ActivityUploadType.swift */; };
+		A5432E9D1E106F92003196D5 /* ActivityZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E421E1068A4003196D5 /* ActivityZone.swift */; };
+		A5432E9E1E106F92003196D5 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E431E1068A4003196D5 /* Announcement.swift */; };
+		A5432E9F1E106F92003196D5 /* Athlete.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E441E1068A4003196D5 /* Athlete.swift */; };
+		A5432EA01E106F92003196D5 /* AthleteSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E451E1068A4003196D5 /* AthleteSummary.swift */; };
+		A5432EA11E106F92003196D5 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E461E1068A4003196D5 /* Auth.swift */; };
+		A5432EA21E106F92003196D5 /* Bike.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E471E1068A4003196D5 /* Bike.swift */; };
+		A5432EA31E106F92003196D5 /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E481E1068A4003196D5 /* Club.swift */; };
+		A5432EA41E106F92003196D5 /* ClubMembership.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E491E1068A4003196D5 /* ClubMembership.swift */; };
+		A5432EA51E106F92003196D5 /* ClubSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E4A1E1068A4003196D5 /* ClubSummary.swift */; };
+		A5432EA61E106F92003196D5 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E4B1E1068A4003196D5 /* Comment.swift */; };
+		A5432EA71E106F92003196D5 /* Deauth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E4C1E1068A4003196D5 /* Deauth.swift */; };
+		A5432EA81E106F92003196D5 /* Gear.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E4D1E1068A4003196D5 /* Gear.swift */; };
+		A5432EA91E106F92003196D5 /* GearSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E4E1E1068A4003196D5 /* GearSummary.swift */; };
+		A5432EAA1E106F92003196D5 /* GroupEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E4F1E1068A4003196D5 /* GroupEvent.swift */; };
+		A5432EAB1E106F92003196D5 /* InstagramPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E501E1068A4003196D5 /* InstagramPhoto.swift */; };
+		A5432EAC1E106F92003196D5 /* Lap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E511E1068A4003196D5 /* Lap.swift */; };
+		A5432EAD1E106F92003196D5 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E521E1068A4003196D5 /* Leaderboard.swift */; };
+		A5432EAE1E106F92003196D5 /* LeaderboardEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E531E1068A4003196D5 /* LeaderboardEntry.swift */; };
+		A5432EAF1E106F92003196D5 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E551E1068A4003196D5 /* Photo.swift */; };
+		A5432EB01E106F92003196D5 /* PhotoSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E561E1068A4003196D5 /* PhotoSummary.swift */; };
+		A5432EB11E106F92003196D5 /* PrimaryPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E571E1068A4003196D5 /* PrimaryPhoto.swift */; };
+		A5432EB21E106F92003196D5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E581E1068A4003196D5 /* Route.swift */; };
+		A5432EB31E106F92003196D5 /* RouteSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E591E1068A4003196D5 /* RouteSummary.swift */; };
+		A5432EB41E106F92003196D5 /* RunningRace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E5A1E1068A4003196D5 /* RunningRace.swift */; };
+		A5432EB51E106F92003196D5 /* RunningRaceSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E5B1E1068A4003196D5 /* RunningRaceSummary.swift */; };
+		A5432EB61E106F92003196D5 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E5C1E1068A4003196D5 /* Segment.swift */; };
+		A5432EB71E106F92003196D5 /* SegmentEffort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E5D1E1068A4003196D5 /* SegmentEffort.swift */; };
+		A5432EB81E106F92003196D5 /* SegmentEffortSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E5E1E1068A4003196D5 /* SegmentEffortSummary.swift */; };
+		A5432EB91E106F92003196D5 /* SegmentSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E5F1E1068A4003196D5 /* SegmentSummary.swift */; };
+		A5432EBA1E106F92003196D5 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E601E1068A4003196D5 /* Stats.swift */; };
+		A5432EBB1E106F92003196D5 /* StravaPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E631E1068A4003196D5 /* StravaPhoto.swift */; };
+		A5432EBC1E106F92003196D5 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E641E1068A4003196D5 /* Stream.swift */; };
+		A5432EBD1E106F92003196D5 /* Zones.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E661E1068A4003196D5 /* Zones.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A5432E761E1068C2003196D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5432DFD1E106209003196D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5432E6B1E1068C1003196D5;
+			remoteInfo = Strava;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A5432E3E1E1068A4003196D5 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		A5432E3F1E1068A4003196D5 /* ActivitySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySummary.swift; sourceTree = "<group>"; };
+		A5432E401E1068A4003196D5 /* ActivityUploadStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityUploadStatus.swift; sourceTree = "<group>"; };
+		A5432E411E1068A4003196D5 /* ActivityUploadType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityUploadType.swift; sourceTree = "<group>"; };
+		A5432E421E1068A4003196D5 /* ActivityZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityZone.swift; sourceTree = "<group>"; };
+		A5432E431E1068A4003196D5 /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
+		A5432E441E1068A4003196D5 /* Athlete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Athlete.swift; sourceTree = "<group>"; };
+		A5432E451E1068A4003196D5 /* AthleteSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteSummary.swift; sourceTree = "<group>"; };
+		A5432E461E1068A4003196D5 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		A5432E471E1068A4003196D5 /* Bike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bike.swift; sourceTree = "<group>"; };
+		A5432E481E1068A4003196D5 /* Club.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
+		A5432E491E1068A4003196D5 /* ClubMembership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubMembership.swift; sourceTree = "<group>"; };
+		A5432E4A1E1068A4003196D5 /* ClubSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubSummary.swift; sourceTree = "<group>"; };
+		A5432E4B1E1068A4003196D5 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		A5432E4C1E1068A4003196D5 /* Deauth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deauth.swift; sourceTree = "<group>"; };
+		A5432E4D1E1068A4003196D5 /* Gear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gear.swift; sourceTree = "<group>"; };
+		A5432E4E1E1068A4003196D5 /* GearSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearSummary.swift; sourceTree = "<group>"; };
+		A5432E4F1E1068A4003196D5 /* GroupEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEvent.swift; sourceTree = "<group>"; };
+		A5432E501E1068A4003196D5 /* InstagramPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramPhoto.swift; sourceTree = "<group>"; };
+		A5432E511E1068A4003196D5 /* Lap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lap.swift; sourceTree = "<group>"; };
+		A5432E521E1068A4003196D5 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
+		A5432E531E1068A4003196D5 /* LeaderboardEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardEntry.swift; sourceTree = "<group>"; };
+		A5432E541E1068A4003196D5 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		A5432E551E1068A4003196D5 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		A5432E561E1068A4003196D5 /* PhotoSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSummary.swift; sourceTree = "<group>"; };
+		A5432E571E1068A4003196D5 /* PrimaryPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryPhoto.swift; sourceTree = "<group>"; };
+		A5432E581E1068A4003196D5 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		A5432E591E1068A4003196D5 /* RouteSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSummary.swift; sourceTree = "<group>"; };
+		A5432E5A1E1068A4003196D5 /* RunningRace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRace.swift; sourceTree = "<group>"; };
+		A5432E5B1E1068A4003196D5 /* RunningRaceSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRaceSummary.swift; sourceTree = "<group>"; };
+		A5432E5C1E1068A4003196D5 /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		A5432E5D1E1068A4003196D5 /* SegmentEffort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentEffort.swift; sourceTree = "<group>"; };
+		A5432E5E1E1068A4003196D5 /* SegmentEffortSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentEffortSummary.swift; sourceTree = "<group>"; };
+		A5432E5F1E1068A4003196D5 /* SegmentSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentSummary.swift; sourceTree = "<group>"; };
+		A5432E601E1068A4003196D5 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		A5432E611E1068A4003196D5 /* StravaClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StravaClient.swift; sourceTree = "<group>"; };
+		A5432E621E1068A4003196D5 /* StravaObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StravaObject.swift; sourceTree = "<group>"; };
+		A5432E631E1068A4003196D5 /* StravaPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StravaPhoto.swift; sourceTree = "<group>"; };
+		A5432E641E1068A4003196D5 /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
+		A5432E651E1068A4003196D5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		A5432E661E1068A4003196D5 /* Zones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zones.swift; sourceTree = "<group>"; };
+		A5432E6E1E1068C1003196D5 /* Strava.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Strava.h; sourceTree = "<group>"; };
+		A5432E6F1E1068C1003196D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5432E791E1068C2003196D5 /* StravaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StravaTests.swift; sourceTree = "<group>"; };
+		A5432E7B1E1068C2003196D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5432E8A1E106CAC003196D5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		A5432E8B1E106CAC003196D5 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = ../Carthage/Build/iOS/AlamofireObjectMapper.framework; sourceTree = "<group>"; };
+		A5432E8C1E106CAC003196D5 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = ../Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
+		A5432E901E106DC7003196D5 /* Strava.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Strava.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5432E951E106F92003196D5 /* StravaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StravaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5432E681E1068C1003196D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5432E8D1E106CAC003196D5 /* Alamofire.framework in Frameworks */,
+				A5432E8E1E106CAC003196D5 /* AlamofireObjectMapper.framework in Frameworks */,
+				A5432E8F1E106CAC003196D5 /* ObjectMapper.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5432E711E1068C1003196D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5432DFC1E106209003196D5 = {
+			isa = PBXGroup;
+			children = (
+				A5432E3D1E1068A4003196D5 /* Sources */,
+				A5432E6D1E1068C1003196D5 /* Strava */,
+				A5432E781E1068C2003196D5 /* StravaTests */,
+				A5432E891E106CAC003196D5 /* Frameworks */,
+				A5432E901E106DC7003196D5 /* Strava.framework */,
+				A5432E951E106F92003196D5 /* StravaTests.xctest */,
+			);
+			sourceTree = "<group>";
+		};
+		A5432E3D1E1068A4003196D5 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E871E106A4F003196D5 /* Utils */,
+				A5432E861E106A44003196D5 /* Networking */,
+				A5432E611E1068A4003196D5 /* StravaClient.swift */,
+				A5432E841E10691C003196D5 /* Core */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A5432E6D1E1068C1003196D5 /* Strava */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E6E1E1068C1003196D5 /* Strava.h */,
+				A5432E6F1E1068C1003196D5 /* Info.plist */,
+			);
+			path = Strava;
+			sourceTree = "<group>";
+		};
+		A5432E781E1068C2003196D5 /* StravaTests */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E791E1068C2003196D5 /* StravaTests.swift */,
+				A5432E7B1E1068C2003196D5 /* Info.plist */,
+			);
+			path = StravaTests;
+			sourceTree = "<group>";
+		};
+		A5432E841E10691C003196D5 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E881E106A85003196D5 /* Base */,
+				A5432E3E1E1068A4003196D5 /* Activity.swift */,
+				A5432E3F1E1068A4003196D5 /* ActivitySummary.swift */,
+				A5432E401E1068A4003196D5 /* ActivityUploadStatus.swift */,
+				A5432E411E1068A4003196D5 /* ActivityUploadType.swift */,
+				A5432E421E1068A4003196D5 /* ActivityZone.swift */,
+				A5432E431E1068A4003196D5 /* Announcement.swift */,
+				A5432E441E1068A4003196D5 /* Athlete.swift */,
+				A5432E451E1068A4003196D5 /* AthleteSummary.swift */,
+				A5432E461E1068A4003196D5 /* Auth.swift */,
+				A5432E471E1068A4003196D5 /* Bike.swift */,
+				A5432E481E1068A4003196D5 /* Club.swift */,
+				A5432E491E1068A4003196D5 /* ClubMembership.swift */,
+				A5432E4A1E1068A4003196D5 /* ClubSummary.swift */,
+				A5432E4B1E1068A4003196D5 /* Comment.swift */,
+				A5432E4C1E1068A4003196D5 /* Deauth.swift */,
+				A5432E4D1E1068A4003196D5 /* Gear.swift */,
+				A5432E4E1E1068A4003196D5 /* GearSummary.swift */,
+				A5432E4F1E1068A4003196D5 /* GroupEvent.swift */,
+				A5432E501E1068A4003196D5 /* InstagramPhoto.swift */,
+				A5432E511E1068A4003196D5 /* Lap.swift */,
+				A5432E521E1068A4003196D5 /* Leaderboard.swift */,
+				A5432E531E1068A4003196D5 /* LeaderboardEntry.swift */,
+				A5432E551E1068A4003196D5 /* Photo.swift */,
+				A5432E561E1068A4003196D5 /* PhotoSummary.swift */,
+				A5432E571E1068A4003196D5 /* PrimaryPhoto.swift */,
+				A5432E581E1068A4003196D5 /* Route.swift */,
+				A5432E591E1068A4003196D5 /* RouteSummary.swift */,
+				A5432E5A1E1068A4003196D5 /* RunningRace.swift */,
+				A5432E5B1E1068A4003196D5 /* RunningRaceSummary.swift */,
+				A5432E5C1E1068A4003196D5 /* Segment.swift */,
+				A5432E5D1E1068A4003196D5 /* SegmentEffort.swift */,
+				A5432E5E1E1068A4003196D5 /* SegmentEffortSummary.swift */,
+				A5432E5F1E1068A4003196D5 /* SegmentSummary.swift */,
+				A5432E601E1068A4003196D5 /* Stats.swift */,
+				A5432E631E1068A4003196D5 /* StravaPhoto.swift */,
+				A5432E641E1068A4003196D5 /* Stream.swift */,
+				A5432E661E1068A4003196D5 /* Zones.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		A5432E861E106A44003196D5 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E541E1068A4003196D5 /* Network.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		A5432E871E106A4F003196D5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E651E1068A4003196D5 /* Utils.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		A5432E881E106A85003196D5 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E621E1068A4003196D5 /* StravaObject.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		A5432E891E106CAC003196D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E8A1E106CAC003196D5 /* Alamofire.framework */,
+				A5432E8B1E106CAC003196D5 /* AlamofireObjectMapper.framework */,
+				A5432E8C1E106CAC003196D5 /* ObjectMapper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A5432E691E1068C1003196D5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5432E7C1E1068C2003196D5 /* Strava.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A5432E6B1E1068C1003196D5 /* Strava */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5432E7D1E1068C2003196D5 /* Build configuration list for PBXNativeTarget "Strava" */;
+			buildPhases = (
+				A5432E671E1068C1003196D5 /* Sources */,
+				A5432E681E1068C1003196D5 /* Frameworks */,
+				A5432E691E1068C1003196D5 /* Headers */,
+				A5432E6A1E1068C1003196D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Strava;
+			productName = Strava;
+			productReference = A5432E901E106DC7003196D5 /* Strava.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A5432E731E1068C1003196D5 /* StravaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5432E801E1068C2003196D5 /* Build configuration list for PBXNativeTarget "StravaTests" */;
+			buildPhases = (
+				A5432E701E1068C1003196D5 /* Sources */,
+				A5432E711E1068C1003196D5 /* Frameworks */,
+				A5432E721E1068C1003196D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5432E771E1068C2003196D5 /* PBXTargetDependency */,
+			);
+			name = StravaTests;
+			productName = StravaTests;
+			productReference = A5432E951E106F92003196D5 /* StravaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5432DFD1E106209003196D5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Oleksandr Glagoliev";
+				TargetAttributes = {
+					A5432E6B1E1068C1003196D5 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = P44F5PA4BT;
+						ProvisioningStyle = Automatic;
+					};
+					A5432E731E1068C1003196D5 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = P44F5PA4BT;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A5432E001E106209003196D5 /* Build configuration list for PBXProject "Strava" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A5432DFC1E106209003196D5;
+			productRefGroup = A5432DFC1E106209003196D5;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5432E6B1E1068C1003196D5 /* Strava */,
+				A5432E731E1068C1003196D5 /* StravaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5432E6A1E1068C1003196D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5432E721E1068C1003196D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5432E671E1068C1003196D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5432EAE1E106F92003196D5 /* LeaderboardEntry.swift in Sources */,
+				A5432EA21E106F92003196D5 /* Bike.swift in Sources */,
+				A5432EA41E106F92003196D5 /* ClubMembership.swift in Sources */,
+				A5432EB21E106F92003196D5 /* Route.swift in Sources */,
+				A5432EAF1E106F92003196D5 /* Photo.swift in Sources */,
+				A5432EB51E106F92003196D5 /* RunningRaceSummary.swift in Sources */,
+				A5432EA11E106F92003196D5 /* Auth.swift in Sources */,
+				A5432EA01E106F92003196D5 /* AthleteSummary.swift in Sources */,
+				A5432EAA1E106F92003196D5 /* GroupEvent.swift in Sources */,
+				A5432EB41E106F92003196D5 /* RunningRace.swift in Sources */,
+				A5432E991E106F92003196D5 /* Activity.swift in Sources */,
+				A5432E961E106F92003196D5 /* Network.swift in Sources */,
+				A5432E981E106F92003196D5 /* StravaObject.swift in Sources */,
+				A5432EA61E106F92003196D5 /* Comment.swift in Sources */,
+				A5432EAD1E106F92003196D5 /* Leaderboard.swift in Sources */,
+				A5432EB61E106F92003196D5 /* Segment.swift in Sources */,
+				A5432EBD1E106F92003196D5 /* Zones.swift in Sources */,
+				A5432EAC1E106F92003196D5 /* Lap.swift in Sources */,
+				A5432EB01E106F92003196D5 /* PhotoSummary.swift in Sources */,
+				A5432EA71E106F92003196D5 /* Deauth.swift in Sources */,
+				A5432EBC1E106F92003196D5 /* Stream.swift in Sources */,
+				A5432E9F1E106F92003196D5 /* Athlete.swift in Sources */,
+				A5432EA31E106F92003196D5 /* Club.swift in Sources */,
+				A5432E941E106F92003196D5 /* Utils.swift in Sources */,
+				A5432EA51E106F92003196D5 /* ClubSummary.swift in Sources */,
+				A5432EA91E106F92003196D5 /* GearSummary.swift in Sources */,
+				A5432E971E106F92003196D5 /* StravaClient.swift in Sources */,
+				A5432EBA1E106F92003196D5 /* Stats.swift in Sources */,
+				A5432EAB1E106F92003196D5 /* InstagramPhoto.swift in Sources */,
+				A5432EB11E106F92003196D5 /* PrimaryPhoto.swift in Sources */,
+				A5432E9D1E106F92003196D5 /* ActivityZone.swift in Sources */,
+				A5432EB81E106F92003196D5 /* SegmentEffortSummary.swift in Sources */,
+				A5432EBB1E106F92003196D5 /* StravaPhoto.swift in Sources */,
+				A5432E9A1E106F92003196D5 /* ActivitySummary.swift in Sources */,
+				A5432EA81E106F92003196D5 /* Gear.swift in Sources */,
+				A5432EB31E106F92003196D5 /* RouteSummary.swift in Sources */,
+				A5432E9B1E106F92003196D5 /* ActivityUploadStatus.swift in Sources */,
+				A5432EB91E106F92003196D5 /* SegmentSummary.swift in Sources */,
+				A5432E9E1E106F92003196D5 /* Announcement.swift in Sources */,
+				A5432EB71E106F92003196D5 /* SegmentEffort.swift in Sources */,
+				A5432E9C1E106F92003196D5 /* ActivityUploadType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5432E701E1068C1003196D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5432E7A1E1068C2003196D5 /* StravaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5432E771E1068C2003196D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5432E6B1E1068C1003196D5 /* Strava */;
+			targetProxy = A5432E761E1068C2003196D5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A5432E181E106209003196D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A5432E191E106209003196D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A5432E7E1E1068C2003196D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = P44F5PA4BT;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Carthage/Build/iOS\"";
+				INFOPLIST_FILE = Strava/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = io.limlab.Strava;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A5432E7F1E1068C2003196D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = P44F5PA4BT;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Carthage/Build/iOS\"";
+				INFOPLIST_FILE = Strava/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.limlab.Strava;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		A5432E811E1068C2003196D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = P44F5PA4BT;
+				INFOPLIST_FILE = StravaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.limlab.StravaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A5432E821E1068C2003196D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = P44F5PA4BT;
+				INFOPLIST_FILE = StravaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.limlab.StravaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5432E001E106209003196D5 /* Build configuration list for PBXProject "Strava" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5432E181E106209003196D5 /* Debug */,
+				A5432E191E106209003196D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5432E7D1E1068C2003196D5 /* Build configuration list for PBXNativeTarget "Strava" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5432E7E1E1068C2003196D5 /* Debug */,
+				A5432E7F1E1068C2003196D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5432E801E1068C2003196D5 /* Build configuration list for PBXNativeTarget "StravaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5432E811E1068C2003196D5 /* Debug */,
+				A5432E821E1068C2003196D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A5432DFD1E106209003196D5 /* Project object */;
+}
