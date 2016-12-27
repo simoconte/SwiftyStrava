@@ -9,7 +9,7 @@
 import ObjectMapper
 
 public class Activity: ActivitySummary {
-
+    
     var calories: Float = 0 // Kilocalories, uses kilojoules for rides and speed/pace for runs
     var description: String?
     var gear: GearSummary?

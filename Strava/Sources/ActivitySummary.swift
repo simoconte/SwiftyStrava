@@ -10,34 +10,34 @@ import AlamofireObjectMapper
 import ObjectMapper
 
 public enum ActivityType: String {
-    case Ride = "Ride"
-    case Run = "Run"
-    case Swim = "Swim"
-    case Hike = "Hike"
-    case Walk = "Walk"
-    case AlpineSki = "AlpineSki"
-    case BackcountrySki = "BackcountrySki"
-    case Canoeing = "Canoeing"
-    case Crossfit = "Crossfit"
-    case EBikeRide = "EBikeRide"
-    case Elliptical = "Elliptical"
-    case IceSkate = "IceSkate"
-    case InlineSkate = "InlineSkate"
-    case Kayaking = "Kayaking"
-    case Kitesurf = "Kitesurf"
-    case NordicSki = "NordicSki"
-    case RockClimbing = "RockClimbing"
-    case RollerSki = "RollerSki"
-    case Rowing = "Rowing"
-    case Snowboard = "Snowboard"
-    case Snowshoe = "Snowshoe"
-    case StairStepper = "StairStepper"
-    case StandUpPaddling = "StandUpPaddling"
-    case Surfing = "Surfing"
-    case VirtualRide = "VirtualRide"
-    case WeightTraining = "WeightTraining"
-    case Windsurf = "Windsurf"
-    case Workout = "Workout"
+    case ride = "Ride"
+    case run = "Run"
+    case swim = "Swim"
+    case hike = "Hike"
+    case walk = "Walk"
+    case alpineSki = "AlpineSki"
+    case backcountrySki = "BackcountrySki"
+    case canoeing = "Canoeing"
+    case crossfit = "Crossfit"
+    case eBikeRide = "EBikeRide"
+    case elliptical = "Elliptical"
+    case iceSkate = "IceSkate"
+    case inlineSkate = "InlineSkate"
+    case kayaking = "Kayaking"
+    case kitesurf = "Kitesurf"
+    case nordicSki = "NordicSki"
+    case rockClimbing = "RockClimbing"
+    case rollerSki = "RollerSki"
+    case rowing = "Rowing"
+    case snowboard = "Snowboard"
+    case snowshoe = "Snowshoe"
+    case stairStepper = "StairStepper"
+    case standUpPaddling = "StandUpPaddling"
+    case surfing = "Surfing"
+    case virtualRide = "VirtualRide"
+    case weightTraining = "WeightTraining"
+    case windsurf = "Windsurf"
+    case workout = "Workout"
 }
 
 public enum WorkoutType: Int {
@@ -62,7 +62,7 @@ open class ActivitySummary: StravaObject {
     var totalElevationGain: Float = 0
     var elevationHigh: Float = 0
     var elevationLow: Float = 0
-    var type: ActivityType = .Ride
+    var type: ActivityType = .ride
     var startDate: Date?
     var startDateLocal: Date?
     var timeZone: String?

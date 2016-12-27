@@ -60,7 +60,7 @@ public typealias ClimbCategory = Int
 
 open class SegmentSummary: StravaObject {
     var name: String = ""
-    var activityType: ActivityType = .Ride
+    var activityType: ActivityType = .ride
     var distance: Float = 0
     var averageGrade: Float = 0 // Percent
     var maximumGrade: Float = 0 // Percent

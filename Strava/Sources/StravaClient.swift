@@ -734,7 +734,7 @@ public extension StravaClient {
     }
     
     func segmentExplorer(bounds: Bounds,
-                         activityType: ActivityType? = .Ride,
+                         activityType: ActivityType? = .ride,
                          minClimbCategory: ClimbCategory? = nil,
                          maxClimbCategory: ClimbCategory? = nil,
                          completionHandler: @escaping (StravaResponse<[SegmentSummary]>) -> Void) {

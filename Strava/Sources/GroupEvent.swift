@@ -20,7 +20,7 @@ open class GroupEvent: StravaObject {
     var description: String = ""
     var clubId: Int = 0
     var organizingAthlete: AthleteSummary?
-    var activityType: ActivityType = .Run
+    var activityType: ActivityType = .run
     var createdAt: Date?
     var routeId: Int?
     var womanOnly: Bool = false
