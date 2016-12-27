@@ -24,7 +24,7 @@ public struct StravaRequest<Value: Mappable> {
     
     mutating func addParam(_ key: String, value: Any?) {
         guard let value = value else {
-            print("Trying to add `nil` value for key \(key)! Rejected!")
+            print("Warning: Trying to add `nil` HTTP parameter for key \(key)! Action skipped!")
             return
         }
         params[key] = value
@@ -32,7 +32,7 @@ public struct StravaRequest<Value: Mappable> {
     
     mutating func addHeader(_ key: String, value: String?) {
         guard let value = value else {
-            print("Trying to add `nil` value for key \(key)! Rejected!")
+            print("Warning: Trying to add `nil` HTTP header for key \(key)! Action skipped!")
             return
         }
         headers[key] = value
@@ -43,13 +43,7 @@ public struct StravaRequest<Value: Mappable> {
     }
     
     func requestObject(_ completion: @escaping ObjectCompletion) {
-        var resultURL: String!
-        if let url = url {
-            resultURL = url
-        } else {
-            resultURL = StravaClient.BaseURL + (pathComponent ?? "")
-        }
-        Alamofire.request(resultURL, method: method, parameters: params, headers: headers).validate().responseObject { (response: DataResponse<Value>) in
+        Alamofire.request(reqURL, method: method, parameters: params, headers: headers).validate().responseObject { (response: DataResponse<Value>) in
             var stravaResponse: StravaResponse<Value>
             switch response.result {
             case .success(let value):
@@ -62,13 +56,7 @@ public struct StravaRequest<Value: Mappable> {
     }
     
     func requestArray(_ completion: @escaping ArrayCompletion) {
-        var resultURL: String!
-        if let url = url {
-            resultURL = url
-        } else {
-            resultURL = StravaClient.BaseURL + (pathComponent ?? "")
-        }
-        _ = Alamofire.request(resultURL, method: method, parameters: params, headers: headers).validate().responseArray { (response: DataResponse<[Value]>) in
+        Alamofire.request(reqURL, method: method, parameters: params, headers: headers).validate().responseArray { (response: DataResponse<[Value]>) in
             var stravaResponse: StravaResponse<[Value]>
             switch response.result {
             case .success(let value):
@@ -81,13 +69,7 @@ public struct StravaRequest<Value: Mappable> {
     }
     
     func requestWithSuccessConfirmation(_ completion: @escaping SuccessConfirmation) {
-        var resultURL: String!
-        if let url = url {
-            resultURL = url
-        } else {
-            resultURL = StravaClient.BaseURL + (pathComponent ?? "")
-        }
-        _ = Alamofire.request(resultURL, method: method, parameters: params, headers: headers).validate().response(completionHandler: { (response:DefaultDataResponse) in
+        Alamofire.request(reqURL, method: method, parameters: params, headers: headers).validate().response(completionHandler: { (response:DefaultDataResponse) in
             if let error = response.error {
                 completion(false, StravaError(message: error.localizedDescription))
                 return
@@ -97,21 +79,22 @@ public struct StravaRequest<Value: Mappable> {
     }
     
     func uploadRequest(data: Data, _ completion: @escaping ObjectCompletion) {
-        var resultURL: String!
-        if let url = url {
-            resultURL = url
-        } else {
-            resultURL = StravaClient.BaseURL + (pathComponent ?? "")
-        }
-        
-        let _ = Alamofire.upload(multipartFormData: { multipartData in
+        Alamofire.upload(multipartFormData: { multipartData in
             for (key, value) in self.params {
                 multipartData.append(String(describing: value).data(using: .utf8)!, withName: key)
             }
             let fileURL = Bundle.main.url(forResource: "gpx", withExtension: "gpx")!
             multipartData.append(fileURL, withName: "file", fileName: "file.gpx", mimeType: "octet/stream")
-        }, to: resultURL, method: method, headers: headers) { encodingResult in
+        }, to: reqURL, method: method, headers: headers) { encodingResult in
             
+        }
+    }
+    
+    private var reqURL: String {
+        if let url = url {
+            return url
+        } else {
+            return StravaClient.BaseURL + (pathComponent ?? "")
         }
     }
 }
