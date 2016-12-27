@@ -16,7 +16,7 @@ public enum StravaAccessScope: String {
     case Full = "view_private,write"
 }
 
-open class StravaClient: NSObject {
+public class StravaClient: NSObject {
     public static let instance = StravaClient() // Singleton
     
     public static let BaseURL: String = "https://www.strava.com/api/v3"
