@@ -23,9 +23,6 @@
 /* Begin PBXBuildFile section */
 		A5432E7A1E1068C2003196D5 /* StravaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E791E1068C2003196D5 /* StravaTests.swift */; };
 		A5432E7C1E1068C2003196D5 /* Strava.h in Headers */ = {isa = PBXBuildFile; fileRef = A5432E6E1E1068C1003196D5 /* Strava.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A5432E8D1E106CAC003196D5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5432E8A1E106CAC003196D5 /* Alamofire.framework */; };
-		A5432E8E1E106CAC003196D5 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5432E8B1E106CAC003196D5 /* AlamofireObjectMapper.framework */; };
-		A5432E8F1E106CAC003196D5 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5432E8C1E106CAC003196D5 /* ObjectMapper.framework */; };
 		A5432E941E106F92003196D5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E651E1068A4003196D5 /* Utils.swift */; };
 		A5432E961E106F92003196D5 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E541E1068A4003196D5 /* Network.swift */; };
 		A5432E971E106F92003196D5 /* StravaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E611E1068A4003196D5 /* StravaClient.swift */; };
@@ -67,6 +64,9 @@
 		A5432EBB1E106F92003196D5 /* StravaPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E631E1068A4003196D5 /* StravaPhoto.swift */; };
 		A5432EBC1E106F92003196D5 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E641E1068A4003196D5 /* Stream.swift */; };
 		A5432EBD1E106F92003196D5 /* Zones.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E661E1068A4003196D5 /* Zones.swift */; };
+		A585125C1E13174600A2BEE8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58512591E13174600A2BEE8 /* Alamofire.framework */; };
+		A585125D1E13174600A2BEE8 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A585125A1E13174600A2BEE8 /* AlamofireObjectMapper.framework */; };
+		A585125E1E13174600A2BEE8 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A585125B1E13174600A2BEE8 /* ObjectMapper.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,11 +125,11 @@
 		A5432E6F1E1068C1003196D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5432E791E1068C2003196D5 /* StravaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StravaTests.swift; sourceTree = "<group>"; };
 		A5432E7B1E1068C2003196D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5432E8A1E106CAC003196D5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		A5432E8B1E106CAC003196D5 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = ../Carthage/Build/iOS/AlamofireObjectMapper.framework; sourceTree = "<group>"; };
-		A5432E8C1E106CAC003196D5 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = ../Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		A5432E901E106DC7003196D5 /* Strava.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Strava.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5432E951E106F92003196D5 /* StravaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StravaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A58512591E13174600A2BEE8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		A585125A1E13174600A2BEE8 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlamofireObjectMapper.framework; sourceTree = "<group>"; };
+		A585125B1E13174600A2BEE8 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,9 +137,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5432E8D1E106CAC003196D5 /* Alamofire.framework in Frameworks */,
-				A5432E8E1E106CAC003196D5 /* AlamofireObjectMapper.framework in Frameworks */,
-				A5432E8F1E106CAC003196D5 /* ObjectMapper.framework in Frameworks */,
+				A585125E1E13174600A2BEE8 /* ObjectMapper.framework in Frameworks */,
+				A585125C1E13174600A2BEE8 /* Alamofire.framework in Frameworks */,
+				A585125D1E13174600A2BEE8 /* AlamofireObjectMapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,9 +266,9 @@
 		A5432E891E106CAC003196D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A5432E8A1E106CAC003196D5 /* Alamofire.framework */,
-				A5432E8B1E106CAC003196D5 /* AlamofireObjectMapper.framework */,
-				A5432E8C1E106CAC003196D5 /* ObjectMapper.framework */,
+				A58512591E13174600A2BEE8 /* Alamofire.framework */,
+				A585125A1E13174600A2BEE8 /* AlamofireObjectMapper.framework */,
+				A585125B1E13174600A2BEE8 /* ObjectMapper.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -578,7 +578,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Carthage/Build/iOS\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../Carthage/Build/iOS\"",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Strava/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -599,7 +602,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Carthage/Build/iOS\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../Carthage/Build/iOS\"",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Strava/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -689,6 +695,7 @@
 				A58512531E1295CB00A2BEE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

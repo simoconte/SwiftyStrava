@@ -10,25 +10,34 @@ import Alamofire
 import AlamofireObjectMapper
 
 public enum StravaAccessScope: String {
-    case Public = "public"
-    case Write = "write"
-    case ViewPrivate = "view_private"
-    case Full = "view_private,write"
+    case `public` = "public"
+    case write = "write"
+    case viewPrivate = "view_private"
+    case full = "view_private,write"
 }
 
 public class StravaClient: NSObject {
-    public static let instance = StravaClient() // Singleton
     
-    public static let BaseURL: String = "https://www.strava.com/api/v3"
-    fileprivate let callbackURL: String = "facewind://io.limlab.facewind"
+    /// Singleton instantiation
+    public static let instance = StravaClient()
     
+    public static let baseURL: String = "https://www.strava.com/api/v3"
+    
+    fileprivate var callbackURL: String?// = "facewind://io.limlab.facewind"
     fileprivate var authToken: String?
-    fileprivate var clientId: String?
+    fileprivate var clientId: Int64?
     fileprivate var clientSecret: String?
     
-    public func setup(clientId: String, clientSecret: String) {
+    /// Configure `StravaClient`. It's important to call this method before `StravaClient` usage.
+    ///
+    /// - Parameters:
+    ///   - clientId:     application’s ID, obtained during registration
+    ///   - clientSecret: application’s secret, obtained during registration
+    ///   - callbackURL:  URL Scheme value. [See more...](http://limlab.io)
+    public func configure(clientId: Int64, clientSecret: String, callbackURL: String) {
         self.clientId = clientId
         self.clientSecret = clientSecret
+        self.callbackURL = callbackURL
     }
 }
 
@@ -44,12 +53,13 @@ public extension StravaClient {
             return
         }
         
-        guard let url = URL(string: "https://www.strava.com/oauth/authorize?client_id=\(clientId)&response_type=code&redirect_uri=\(callbackURL)&scope=\(StravaAccessScope.Full.rawValue)&approval_prompt=force") else {
+        guard let url = URL(string: "https://www.strava.com/oauth/authorize?client_id=\(clientId)&response_type=code&redirect_uri=\(callbackURL)&scope=\(StravaAccessScope.full.rawValue)&approval_prompt=force") else {
             print("Error: URL malformed!")
             return
         }
         
         UIApplication.shared.openURL(url)
+//        StravaClient.instance.configure(clientId: <#T##Int64#>, clientSecret: <#T##String#>, callbackURL: <#T##String#>)
     }
     
     public func parseURL(_ url: URL) {

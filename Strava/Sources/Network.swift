@@ -94,7 +94,7 @@ public struct StravaRequest<Value: Mappable> {
         if let url = url {
             return url
         } else {
-            return StravaClient.BaseURL + (pathComponent ?? "")
+            return StravaClient.baseURL + (pathComponent ?? "")
         }
     }
 }
