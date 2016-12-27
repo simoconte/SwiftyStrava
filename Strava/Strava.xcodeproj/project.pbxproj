@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		A58512501E1295CB00A2BEE8 /* BuildFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = A58512511E1295CB00A2BEE8 /* Build configuration list for PBXAggregateTarget "BuildFramework" */;
+			buildPhases = (
+				A58512541E12963200A2BEE8 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = BuildFramework;
+			productName = BuildFramework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		A5432E7A1E1068C2003196D5 /* StravaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E791E1068C2003196D5 /* StravaTests.swift */; };
 		A5432E7C1E1068C2003196D5 /* Strava.h in Headers */ = {isa = PBXBuildFile; fileRef = A5432E6E1E1068C1003196D5 /* Strava.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -329,6 +343,11 @@
 						DevelopmentTeam = P44F5PA4BT;
 						ProvisioningStyle = Automatic;
 					};
+					A58512501E1295CB00A2BEE8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = P44F5PA4BT;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = A5432E001E106209003196D5 /* Build configuration list for PBXProject "Strava" */;
@@ -345,6 +364,7 @@
 			targets = (
 				A5432E6B1E1068C1003196D5 /* Strava */,
 				A5432E731E1068C1003196D5 /* StravaTests */,
+				A58512501E1295CB00A2BEE8 /* BuildFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -365,6 +385,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A58512541E12963200A2BEE8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Merge Script\n\n# 1\n# Set bash script to exit immediately if any commands fail.\nset -e\n\n# 2\n# Setup some constants for use later on.\nFRAMEWORK_NAME=\"Strava\"\n\n# 3\n# If remnants from a previous build exist, delete them.\nif [ -d \"${SRCROOT}/build\" ]; then\nrm -rf \"${SRCROOT}/build\"\nfi\n\n# 4\n# Build the framework for device and for simulator (using\n# all needed architectures).\nxcodebuild -target \"${FRAMEWORK_NAME}\" -configuration Release -arch arm64 -arch armv7 -arch armv7s only_active_arch=no defines_module=yes -sdk \"iphoneos\"\nxcodebuild -target \"${FRAMEWORK_NAME}\" -configuration Release -arch x86_64 -arch i386 only_active_arch=no defines_module=yes -sdk \"iphonesimulator\"\n\n# 5\n# Remove .framework file if exists on Desktop from previous run.\nif [ -d \"${HOME}/Desktop/${FRAMEWORK_NAME}.framework\" ]; then\nrm -rf \"${HOME}/Desktop/${FRAMEWORK_NAME}.framework\"\nfi\n\n# 6\n# Copy the device version of framework to Desktop.\ncp -r \"${SRCROOT}/build/Release-iphoneos/${FRAMEWORK_NAME}.framework\" \"${HOME}/Desktop/${FRAMEWORK_NAME}.framework\"\n\n# 7\n# Replace the framework executable within the framework with\n# a new version created by merging the device and simulator\n# frameworks' executables with lipo.\nlipo -create -output \"${HOME}/Desktop/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}\" \"${SRCROOT}/build/Release-iphoneos/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}\" \"${SRCROOT}/build/Release-iphonesimulator/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}\"\n\n# 8\n# Copy the Swift module mappings for the simulator into the\n# framework.  The device mappings already exist from step 6.\ncp -r \"${SRCROOT}/build/Release-iphonesimulator/${FRAMEWORK_NAME}.framework/Modules/${FRAMEWORK_NAME}.swiftmodule/\" \"${HOME}/Desktop/${FRAMEWORK_NAME}.framework/Modules/${FRAMEWORK_NAME}.swiftmodule\"\n\n# 9\n# Delete the most recent build.\nif [ -d \"${SRCROOT}/build\" ]; then\nrm -rf \"${SRCROOT}/build\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A5432E671E1068C1003196D5 /* Sources */ = {
@@ -600,6 +636,22 @@
 			};
 			name = Release;
 		};
+		A58512521E1295CB00A2BEE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = P44F5PA4BT;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A58512531E1295CB00A2BEE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = P44F5PA4BT;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -629,6 +681,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		A58512511E1295CB00A2BEE8 /* Build configuration list for PBXAggregateTarget "BuildFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A58512521E1295CB00A2BEE8 /* Debug */,
+				A58512531E1295CB00A2BEE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
