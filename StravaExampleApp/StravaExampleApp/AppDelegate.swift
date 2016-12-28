@@ -7,15 +7,24 @@
 //
 
 import UIKit
+import Strava
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        // Configure Strava Client
+        let clientId: Int64 = 34238492384 // Client id provided during app registration
+        let clientSecret: String = "Your client secret" // Client secret provided during app registration
+        let callbackURL: String = "io.limlab.StravaExampleApp" // URL from "URL Types"
+        StravaClient.instance.configure(clientId: clientId, clientSecret: clientSecret, callbackURL: callbackURL)
+        
         return true
     }
 

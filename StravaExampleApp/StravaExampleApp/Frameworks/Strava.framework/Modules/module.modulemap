@@ -1,0 +1,10 @@
+framework module Strava {
+  umbrella header "Strava.h"
+
+  export *
+  module * { export * }
+}
+
+module Strava.Swift {
+    header "Strava-Swift.h"
+}

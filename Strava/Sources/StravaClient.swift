@@ -59,7 +59,6 @@ public extension StravaClient {
         }
         
         UIApplication.shared.openURL(url)
-//        StravaClient.instance.configure(clientId: <#T##Int64#>, clientSecret: <#T##String#>, callbackURL: <#T##String#>)
     }
     
     public func parseURL(_ url: URL) {
