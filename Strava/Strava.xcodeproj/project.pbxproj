@@ -67,6 +67,7 @@
 		A585125C1E13174600A2BEE8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58512591E13174600A2BEE8 /* Alamofire.framework */; };
 		A585125D1E13174600A2BEE8 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A585125A1E13174600A2BEE8 /* AlamofireObjectMapper.framework */; };
 		A585125E1E13174600A2BEE8 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A585125B1E13174600A2BEE8 /* ObjectMapper.framework */; };
+		A5FC94B41E1594EE004E1F02 /* StravaClient+OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FC94B31E1594EE004E1F02 /* StravaClient+OAuth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		A58512591E13174600A2BEE8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		A585125A1E13174600A2BEE8 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlamofireObjectMapper.framework; sourceTree = "<group>"; };
 		A585125B1E13174600A2BEE8 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = "<group>"; };
+		A5FC94B31E1594EE004E1F02 /* StravaClient+OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StravaClient+OAuth.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				A5432E861E106A44003196D5 /* Networking */,
 				A5432E611E1068A4003196D5 /* StravaClient.swift */,
 				A5432E841E10691C003196D5 /* Core */,
+				A5FC94B31E1594EE004E1F02 /* StravaClient+OAuth.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				A5432EA31E106F92003196D5 /* Club.swift in Sources */,
 				A5432E941E106F92003196D5 /* Utils.swift in Sources */,
 				A5432EA51E106F92003196D5 /* ClubSummary.swift in Sources */,
+				A5FC94B41E1594EE004E1F02 /* StravaClient+OAuth.swift in Sources */,
 				A5432EA91E106F92003196D5 /* GearSummary.swift in Sources */,
 				A5432E971E106F92003196D5 /* StravaClient.swift in Sources */,
 				A5432EBA1E106F92003196D5 /* Stats.swift in Sources */,

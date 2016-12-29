@@ -23,9 +23,10 @@ public class StravaClient: NSObject {
     
     public static let baseURL: String = "https://www.strava.com/api/v3"
     
-    fileprivate var callbackURL: String?// = "facewind://io.limlab.facewind"
+    fileprivate var callbackURL: String?
     fileprivate var authToken: String?
     fileprivate var clientId: Int64?
+    fileprivate var accessScope: StravaAccessScope? = nil
     fileprivate var clientSecret: String?
     
     /// Configure `StravaClient`. It's important to call this method before `StravaClient` usage.
@@ -33,72 +34,77 @@ public class StravaClient: NSObject {
     /// - Parameters:
     ///   - clientId:     application’s ID, obtained during registration
     ///   - clientSecret: application’s secret, obtained during registration
+    ///   - accessScope:  listed in `StravaAccessScope` enum. Comma delimited string of ‘view_private’ and/or ‘write’, leave blank for read-only permissions
     ///   - callbackURL:  URL Scheme value. [See more...](http://limlab.io)
-    public func configure(clientId: Int64, clientSecret: String, callbackURL: String) {
+    public func configure(clientId: Int64, clientSecret: String, accessScope: StravaAccessScope? = nil, callbackURL: String) {
         self.clientId = clientId
         self.clientSecret = clientSecret
         self.callbackURL = callbackURL
+        self.accessScope = accessScope
+    }
+}
+
+
+public struct AccessCredentials {
+    var clientId: Int64
+    var clientSecret: String
+    var code: String
+}
+
+enum OAuthError: Error {
+    case urlMalformed
+    case parameterMissing(paramterName: String)
+    case notAuthorized(reason: String)
+}
+
+/*
+ OAuth helpers
+ */
+public extension StravaClient {
+    public func oAuthURL() throws -> URL {
+        guard let clientId = clientId else {
+            throw OAuthError.parameterMissing(paramterName: "clientId")
+        }
+        
+        var scope: String = ""
+        if let accessScope = self.accessScope {
+            scope = "&scope =" + accessScope.rawValue
+        }
+        
+        guard let url = URL(string: "https://www.strava.com/oauth/authorize?client_id=\(clientId)&response_type=code&redirect_uri=\(callbackURL)\(scope)&approval_prompt=force") else {
+            throw OAuthError.urlMalformed
+        }
+        
+        return url
+    }
+    
+    
+    public func extractAccessCredentials(from url: URL) throws -> AccessCredentials {
+        guard let comps = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+            throw OAuthError.notAuthorized(reason: "Cannot resolve URL components for URL: \(url)")
+        }
+        
+        guard let clientId = self.clientId else {
+            throw OAuthError.parameterMissing(paramterName: "clientId")
+        }
+        
+        guard let clientSecret = self.clientSecret else {
+            throw OAuthError.parameterMissing(paramterName: "clientSecret")
+        }
+        
+        guard let code = (comps.queryItems?.filter { $0.name == "code" })?.first?.value else {
+            throw OAuthError.notAuthorized(reason: "Cannot retrieve `code` value from URL: \(url)")
+        }
+        
+        return AccessCredentials(clientId: clientId, clientSecret: clientSecret, code: code)
     }
 }
 
 /*
  Authentication
  */
-public typealias LoginCredentials = (clientId: String, clientSecret: String, code: String)
-
 public extension StravaClient {
-    public func oAuth() {
-        guard let clientId = clientId else {
-            print("Stava `clientId` is not set up!")
-            return
-        }
-        
-        guard let url = URL(string: "https://www.strava.com/oauth/authorize?client_id=\(clientId)&response_type=code&redirect_uri=\(callbackURL)&scope=\(StravaAccessScope.full.rawValue)&approval_prompt=force") else {
-            print("Error: URL malformed!")
-            return
-        }
-        
-        UIApplication.shared.openURL(url)
-    }
-    
-    public func parseURL(_ url: URL) {
-        guard let comps = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
-            print("Error! App is not authorized! URL: \(url)")
-            return
-        }
-        
-        guard let clientId = clientId,
-            let clientSecret = clientSecret,
-            let code = (comps.queryItems?.filter { $0.name == "code" })?.first?.value else {
-            print("Stava `clientId` or `clientSecret` is not set up!")
-            return
-        }
-        
-        // TODO (1): Make a callback for credentials saving. It should be up to developer
-        UserDefaults.standard.setValue(clientSecret, forKey: "clientSecret")
-        UserDefaults.standard.setValue(clientId, forKey: "clientId")
-        UserDefaults.standard.setValue(code, forKey: "code")
-        UserDefaults.standard.synchronize()
-    }
-    
-    public func loginCredentials() -> LoginCredentials? {
-        // TODO (1): Improve
-        guard let clientId = UserDefaults.standard.value(forKey: "clientId") as? String,
-            let clientSecret = UserDefaults.standard.value(forKey: "clientSecret") as? String,
-            let code = UserDefaults.standard.value(forKey: "code") as? String else {
-            print("Info: No available Login Credentials. Try to login via OAuth!")
-            return nil
-        }
-        
-        return (clientId: clientId, clientSecret: clientSecret, code: code)
-    }
-    
-    public func authorize(completion:@escaping (_ authResponse: StravaResponse<Auth>) -> Void) {
-        guard let credentials = loginCredentials() else {
-            // TODO: return normal value
-            return
-        }
-        
+    public func authorize(credentials: AccessCredentials, completion:@escaping (_ authResponse: StravaResponse<Auth>) -> Void) {
         var req = StravaRequest<Auth>()
         req.method = .post
         req.url = "https://www.strava.com/oauth/token"
