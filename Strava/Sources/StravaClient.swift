@@ -51,8 +51,8 @@ public struct AccessCredentials {
     var code: String
 }
 
-enum OAuthError: Error {
-    case urlMalformed
+public enum OAuthError: Error {
+    case urlMalformed(url: String)
     case parameterMissing(paramterName: String)
     case notAuthorized(reason: String)
 }
@@ -61,24 +61,44 @@ enum OAuthError: Error {
  OAuth helpers
  */
 public extension StravaClient {
+    
+    /// This URL should be used for OAuth authentication. You are responsible for
+    /// showing internal web-view or web-browser window with Strava™ application access page
+    ///
+    /// Read more about Authentication process [here](http://limlab.io)
+    ///
+    /// - Returns: `URL` to be loaded by web-view
+    /// - Throws: `OAuthError` in case of unexpected behavior
     public func oAuthURL() throws -> URL {
-        guard let clientId = clientId else {
+        guard let clientId = self.clientId else {
             throw OAuthError.parameterMissing(paramterName: "clientId")
+        }
+        
+        guard let callbackURL = self.callbackURL else {
+            throw OAuthError.parameterMissing(paramterName: "callbackURL")
         }
         
         var scope: String = ""
         if let accessScope = self.accessScope {
-            scope = "&scope =" + accessScope.rawValue
+            scope = "&scope=" + accessScope.rawValue
         }
         
-        guard let url = URL(string: "https://www.strava.com/oauth/authorize?client_id=\(clientId)&response_type=code&redirect_uri=\(callbackURL)\(scope)&approval_prompt=force") else {
-            throw OAuthError.urlMalformed
+        let urlString = "https://www.strava.com/oauth/authorize?client_id=\(clientId)&response_type=code&redirect_uri=\(callbackURL)\(scope)&approval_prompt=force"
+        guard let url = URL(string: urlString) else {
+            throw OAuthError.urlMalformed(url: urlString)
         }
         
         return url
     }
     
     
+    /// After user finishes his interaction with Strava™ application access page, 
+    /// `application:openURL:options:` will be triggered in your app's `AppDelegate`. 
+    /// `url` parameter contains url, from which we can extract needed auth data
+    ///
+    /// - Parameter url: url passed received from `AppDelegate`
+    /// - Returns: `AccessCredentials` struct with authorization data or throws `OAuthError`
+    /// - Throws: an `OAuthError` in case of unexpected behavior
     public func extractAccessCredentials(from url: URL) throws -> AccessCredentials {
         guard let comps = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
             throw OAuthError.notAuthorized(reason: "Cannot resolve URL components for URL: \(url)")
