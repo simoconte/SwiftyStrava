@@ -124,6 +124,12 @@ public extension StravaClient {
  Authentication
  */
 public extension StravaClient {
+    /// Retrieves access token from Strava server. Access token is sent with every
+    /// request that requires authorization to retrieve data
+    ///
+    /// - Parameters:
+    ///   - credentials: `AccessCredentrials` object that was obtained by `extractAccessCredentials from:` method
+    ///   - completion: The closure called when request is complete
     public func authorize(credentials: AccessCredentials, completion:@escaping (_ authResponse: StravaResponse<Auth>) -> Void) {
         var req = StravaRequest<Auth>()
         req.method = .post
@@ -131,30 +137,32 @@ public extension StravaClient {
         req.addParam("client_id", value: credentials.clientId)
         req.addParam("code", value: credentials.code)
         req.addParam("client_secret", value: credentials.clientSecret)
-        req.requestObject { (response: StravaResponse<Auth>) in
-            switch response {
+        req.requestObject { authResponse in
+            switch authResponse {
             case .Success(let auth):
                 self.authToken = auth.accessToken
-            case .Failure(let err):
-                print("^ \(err.message)")
+            case .Failure:
+                self.authToken = nil
             }
-            completion(response)
+            completion(authResponse)
         }
     }
     
+    /// Deauthorizes user and invalidates current `accessToken`
+    ///
+    /// - Parameter completion: The closure called when request is complete
     public func deauthorize(completion:@escaping (_ authResponse: StravaResponse<Deauth>) -> Void) {
         var req = StravaRequest<Deauth>()
         req.method = .post
         req.url = "https://www.strava.com/oauth/deauthorize"
         req.addToken(token: StravaClient.instance.authToken!)
-        req.requestObject { (response: StravaResponse<Deauth>) in
-            switch response {
+        req.requestObject { deauthResponse in
+            switch deauthResponse {
             case .Success:
                 self.authToken = nil
-            case .Failure(let err):
-                print("^ \(err.message)")
+            default: break
             }
-            completion(response)
+            completion(deauthResponse)
         }
     }
 }

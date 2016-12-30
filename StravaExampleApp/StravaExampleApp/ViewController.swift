@@ -7,17 +7,27 @@
 //
 
 import UIKit
+import Strava
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let url = try? StravaClient.instance.oAuthURL() {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url) { _ in }
+            } else {
+                print("Cannot open URL \(url)")
+            }
+        } else {
+            print("No URL!")
+        }
     }
 
 

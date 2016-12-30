@@ -20,11 +20,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // Configure Strava Client
-        let clientId: Int64 = 34238492384 // Client id provided during app registration
-        let clientSecret: String = "Your client secret" // Client secret provided during app registration
-        let callbackURL: String = "io.limlab.StravaExampleApp" // URL from "URL Types"
+        let clientId: Int64 = 12886 // Client id provided during app registration
+        let clientSecret: String = "f751142336db9b849591af85c314b1d12f7f5639" // Client secret provided during app registration
+        let callbackURL: String = "facewind://io.limlab.facewind" // URL from "URL Types"
         StravaClient.instance.configure(clientId: clientId, clientSecret: clientSecret, callbackURL: callbackURL)
         
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        do {
+            let credentials = try StravaClient.instance.extractAccessCredentials(from: url)
+            print(credentials)
+            StravaClient.instance.authorize(credentials: credentials, completion: { auth in
+                
+            })
+        } catch OAuthError.urlMalformed {
+            print("Error -> Not authorized! ULR malformed")
+        } catch OAuthError.notAuthorized(reason: let reason) {
+            print("Error -> Not authorized! Reason: \(reason)")
+        } catch {
+            print("Error -> OAuth error!")
+        }
         return true
     }
 

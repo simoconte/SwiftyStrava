@@ -12,18 +12,30 @@
 		A58512441E12635700A2BEE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58512421E12635700A2BEE8 /* Main.storyboard */; };
 		A58512461E12635700A2BEE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A58512451E12635700A2BEE8 /* Assets.xcassets */; };
 		A58512491E12635700A2BEE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58512471E12635700A2BEE8 /* LaunchScreen.storyboard */; };
-		A5FC94AF1E144341004E1F02 /* Strava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FC94AE1E144341004E1F02 /* Strava.framework */; };
-		A5FC94B11E14436D004E1F02 /* Strava.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5FC94AE1E144341004E1F02 /* Strava.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5FC94B51E15BC11004E1F02 /* Strava.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FC94AE1E144341004E1F02 /* Strava.framework */; };
+		A5FC94B61E15BC11004E1F02 /* Strava.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5FC94AE1E144341004E1F02 /* Strava.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5FC94BC1E15BC65004E1F02 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FC94B91E15BC65004E1F02 /* AlamofireObjectMapper.framework */; };
+		A5FC94BE1E15BC84004E1F02 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FC94B81E15BC65004E1F02 /* Alamofire.framework */; };
+		A5FC94BF1E15BC84004E1F02 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5FC94B81E15BC65004E1F02 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5FC94C11E15BC87004E1F02 /* AlamofireObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5FC94B91E15BC65004E1F02 /* AlamofireObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5FC94C21E15BC8F004E1F02 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FC94BA1E15BC65004E1F02 /* ObjectMapper.framework */; };
+		A5FC94C31E15BC8F004E1F02 /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5FC94BA1E15BC65004E1F02 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5FC94C71E16C8D9004E1F02 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FC94C41E16C8D9004E1F02 /* LoginViewController.swift */; };
+		A5FC94C81E16C8D9004E1F02 /* ResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FC94C51E16C8D9004E1F02 /* ResponseViewController.swift */; };
+		A5FC94C91E16C8D9004E1F02 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FC94C61E16C8D9004E1F02 /* TestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A5FC94B21E14436D004E1F02 /* Embed Frameworks */ = {
+		A5FC94B71E15BC11004E1F02 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A5FC94B11E14436D004E1F02 /* Strava.framework in Embed Frameworks */,
+				A5FC94B61E15BC11004E1F02 /* Strava.framework in Embed Frameworks */,
+				A5FC94C11E15BC87004E1F02 /* AlamofireObjectMapper.framework in Embed Frameworks */,
+				A5FC94C31E15BC8F004E1F02 /* ObjectMapper.framework in Embed Frameworks */,
+				A5FC94BF1E15BC84004E1F02 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,6 +51,12 @@
 		A58512481E12635700A2BEE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A585124A1E12635700A2BEE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5FC94AE1E144341004E1F02 /* Strava.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Strava.framework; sourceTree = "<group>"; };
+		A5FC94B81E15BC65004E1F02 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		A5FC94B91E15BC65004E1F02 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlamofireObjectMapper.framework; sourceTree = "<group>"; };
+		A5FC94BA1E15BC65004E1F02 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = "<group>"; };
+		A5FC94C41E16C8D9004E1F02 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A5FC94C51E16C8D9004E1F02 /* ResponseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseViewController.swift; sourceTree = "<group>"; };
+		A5FC94C61E16C8D9004E1F02 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +64,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5FC94AF1E144341004E1F02 /* Strava.framework in Frameworks */,
+				A5FC94B51E15BC11004E1F02 /* Strava.framework in Frameworks */,
+				A5FC94BC1E15BC65004E1F02 /* AlamofireObjectMapper.framework in Frameworks */,
+				A5FC94BE1E15BC84004E1F02 /* Alamofire.framework in Frameworks */,
+				A5FC94C21E15BC8F004E1F02 /* ObjectMapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +94,9 @@
 		A585123D1E12635700A2BEE8 /* StravaExampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				A5FC94C41E16C8D9004E1F02 /* LoginViewController.swift */,
+				A5FC94C51E16C8D9004E1F02 /* ResponseViewController.swift */,
+				A5FC94C61E16C8D9004E1F02 /* TestViewController.swift */,
 				A585123E1E12635700A2BEE8 /* AppDelegate.swift */,
 				A58512401E12635700A2BEE8 /* ViewController.swift */,
 				A58512421E12635700A2BEE8 /* Main.storyboard */,
@@ -86,6 +110,9 @@
 		A5FC94AD1E144341004E1F02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5FC94B81E15BC65004E1F02 /* Alamofire.framework */,
+				A5FC94B91E15BC65004E1F02 /* AlamofireObjectMapper.framework */,
+				A5FC94BA1E15BC65004E1F02 /* ObjectMapper.framework */,
 				A5FC94AE1E144341004E1F02 /* Strava.framework */,
 			);
 			name = Frameworks;
@@ -102,7 +129,7 @@
 				A58512371E12635700A2BEE8 /* Sources */,
 				A58512381E12635700A2BEE8 /* Frameworks */,
 				A58512391E12635700A2BEE8 /* Resources */,
-				A5FC94B21E14436D004E1F02 /* Embed Frameworks */,
+				A5FC94B71E15BC11004E1F02 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -166,6 +193,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5FC94C91E16C8D9004E1F02 /* TestViewController.swift in Sources */,
+				A5FC94C71E16C8D9004E1F02 /* LoginViewController.swift in Sources */,
+				A5FC94C81E16C8D9004E1F02 /* ResponseViewController.swift in Sources */,
 				A58512411E12635700A2BEE8 /* ViewController.swift in Sources */,
 				A585123F1E12635700A2BEE8 /* AppDelegate.swift in Sources */,
 			);

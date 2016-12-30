@@ -22,10 +22,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>io.limlab.StravaExampleApp</string>
+			<string>io.limlab.facewind</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>StravaExampleApp</string>
+				<string>facewind</string>
 			</array>
 		</dict>
 	</array>

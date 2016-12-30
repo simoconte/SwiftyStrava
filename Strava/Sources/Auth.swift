@@ -9,7 +9,7 @@
 import ObjectMapper
 
 open class Auth {
-    var accessToken: String = ""
+    var accessToken: String?
     var athlete: Athlete?
     
     required public init?(map: Map){}

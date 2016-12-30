@@ -131,20 +131,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) StravaClient
 + (StravaClient * _Nonnull)instance;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull baseURL;)
 + (NSString * _Nonnull)baseURL;
-/**
-  Configure \code
-  StravaClient
-  \endcode. It’s important to call this method before \code
-  StravaClient
-  \endcode usage.
-  \param clientId application’s ID, obtained during registration
-
-  \param clientSecret application’s secret, obtained during registration
-
-  \param callbackURL URL Scheme value. <a href="http://limlab.io">See more…</a>
-
-*/
-- (void)configureWithClientId:(int64_t)clientId clientSecret:(NSString * _Nonnull)clientSecret callbackURL:(NSString * _Nonnull)callbackURL;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -174,12 +160,30 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 
 
 @interface StravaClient (SWIFT_EXTENSION(Strava))
+/**
+  This URL should be used for OAuth authentication. You are responsible for
+  showing internal web-view or web-browser window with Strava™ application access page
+  Read more about Authentication process <a href="http://limlab.io">here</a>
+
+  throws:
+  \code
+  OAuthError
+  \endcode in case of unexpected behavior
+
+  returns:
+  \code
+  URL
+  \endcode to be loaded by web-view
+*/
+- (NSURL * _Nullable)oAuthURLAndReturnError:(NSError * _Nullable * _Nullable)error;
 @end
 
 
 @interface StravaClient (SWIFT_EXTENSION(Strava))
-- (void)oAuth;
-- (void)parseURL:(NSURL * _Nonnull)url;
+@end
+
+
+@interface StravaClient (SWIFT_EXTENSION(Strava))
 @end
 
 
