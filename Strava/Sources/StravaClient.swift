@@ -172,8 +172,14 @@ public extension StravaClient {
  Athletes
  */
 public extension StravaClient {
-    func retrieveAthlete(athleteId: Int? = nil,
-                         completionHandler: @escaping (StravaResponse<Athlete>) -> Void) {
+    
+    /// This request is used to retrieve information about any athlete on Strava if `athleteId` is `nil` - returns current athlete.
+    /// Returns a summary representation of the athlete even if the indicated athlete matches the authenticated athlete
+    ///
+    /// - Parameters:
+    ///   - athleteId: needed athlete's id (leave blank in case of retrieving current athlete info)
+    ///   - completion: the closure called when request is complete
+    func retrieveAthlete(athleteId: Int? = nil, completion: @escaping (StravaResponse<Athlete>) -> Void) {
         var req = StravaRequest<Athlete>()
         if let id = athleteId {
             req.pathComponent = "/athletes/\(id)"
@@ -185,10 +191,23 @@ public extension StravaClient {
         req.requestObject(completionHandler)
     }
     
+    
+    /// Friends are users the current athlete is following. The activities owned by these users will appear in the current athlete’s activity feed.
+    /// There are two types of requests, one for the authenticated athlete and another for any athlete specified by an ID. 
+    /// In the second case, if the indicated athlete has blocked the authenticated athlete, the result will be an empty array. Pagination is supported.
+    ///
+    /// - Parameters:
+    ///   - athleteId: integer required depending on request type
+    ///
+    ///   - page: start page
+    ///   - perPage: num records per page
+    ///   - completion: the closure called when request is complete
+    /// 
+    /// [Read about pagination...](http://limlab.io)
     func listAthletesFriends(athleteId: Int? = nil,
                              page: Int = 0,
                              perPage: Int = 0,
-                             completionHandler: @escaping (StravaResponse<[AthleteSummary]>) -> Void) {
+                             completion: @escaping (StravaResponse<[AthleteSummary]>) -> Void) {
         var req = StravaRequest<AthleteSummary>()
         if let id = athleteId {
             req.pathComponent = "/athletes/\(id)/friends"
@@ -203,7 +222,7 @@ public extension StravaClient {
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
     func listAthletesFollowers(athleteId: Int? = nil,
