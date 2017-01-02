@@ -9,25 +9,25 @@
 import ObjectMapper
 
 public enum ClubType: String {
-    case CasualClub = "casual_club"
-    case RacingTeam = "racing_team"
-    case Shop = "shop"
-    case Company = "company"
-    case Other = "other"
+    case casualClub = "casual_club"
+    case racingTeam = "racing_team"
+    case shop = "shop"
+    case company = "company"
+    case other = "other"
 }
 
 public enum MembershipStatus: String {
-    case Member = "member"
-    case Pending = "pending"
+    case member = "member"
+    case pending = "pending"
 }
 
 public class Club: ClubSummary {
     var description: String?
-    var clubType: ClubType = .Other
+    var clubType: ClubType = .other
     var membership: MembershipStatus? // Membership status of the requesting athlete "member", "pending", null (not a member and have not requested join)
     var admin: Bool = false // `true` only if the requesting athlete is a club admin
     var owner: Bool = false // `true` only if the requesting athlete is the club owner
-    var followingCount: Int? // Total number of members the authenticated user is currently following
+    var followingCount: Int = 0 // Total number of members the authenticated user is currently following
     
     override public func mapping(map: Map) {
         super.mapping(map: map)

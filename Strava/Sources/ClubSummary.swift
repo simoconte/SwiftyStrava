@@ -9,19 +9,19 @@
 import ObjectMapper
 
 public enum SportType: String {
-    case Cycling = "cycling"
-    case Running = "running"
-    case Triathlon = "triathlon"
-    case Other = "other"
+    case cycling = "cycling"
+    case running = "running"
+    case triathlon = "triathlon"
+    case other = "other"
 }
 
 public class ClubSummary: StravaObject {
-    var name: String = ""
+    var name: String?
     var profileMedium: String? // URL to a 60x60 pixel profile picture
     var profile: String? // URL to a 124x124 pixel profile picture
     var coverPhoto: String? // URL to a ~1185x580 pixel cover photo
     var coverPhotoSmall: String? // URL to a ~360x176 pixel cover photo
-    var sportType: SportType = .Other
+    var sportType: SportType = .other
     var city: String?
     var state: String?
     var country: String?
