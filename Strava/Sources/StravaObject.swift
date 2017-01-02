@@ -11,7 +11,7 @@ import ObjectMapper
 
 open class StravaObject: Mappable {
     var id: Int64?
-    var resourceState: Int = -1
+    var resourceState: Int?
     
     required public init?(map: Map){}
     

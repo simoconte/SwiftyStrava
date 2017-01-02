@@ -9,20 +9,20 @@
 import ObjectMapper
 
 public enum Gender: String {
-    case Male = "M"
-    case Female = "F"
+    case male = "M"
+    case female = "F"
 }
 
 public enum FollowingStatus: String {
-    case Pending = "pending"
-    case Accepted = "accepted"
-    case Blocked = "blocked"
+    case pending = "pending"
+    case accepted = "accepted"
+    case blocked = "blocked"
 }
     
 open class AthleteSummary: StravaObject {
     // Profile
-    var firstName: String = ""
-    var lastName: String = ""
+    var firstName: String?
+    var lastName: String?
     var profileMedium: String? // URL to a 62x62 pixel profile picture
     var profile: String? // URL to a 124x124 pixel profile picture
     var city: String?

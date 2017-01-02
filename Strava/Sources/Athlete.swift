@@ -13,8 +13,8 @@ public enum AthleteType: Int {
 }
 
 public enum MeasurementPreference: String {
-    case Feet = "feet"
-    case Meters = "meters"
+    case feet = "feet"
+    case meters = "meters"
 }
 
 open class Athlete: AthleteSummary {
@@ -22,8 +22,8 @@ open class Athlete: AthleteSummary {
     var friendCount: Int = 0
     var mutualFriendCount: Int = 0
     var athleteType: AthleteType = .cyclist // Athlete’s default sport type: 0=cyclist, 1=runner
-    var datePreference: String = ""
-    var measurementPreference: MeasurementPreference = .Meters
+    var datePreference: String?
+    var measurementPreference: MeasurementPreference = .meters
     var email: String = ""
     var ftp: Int = 0
     var weight: Float = 0.0 // Kilograms
