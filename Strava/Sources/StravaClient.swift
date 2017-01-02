@@ -188,7 +188,7 @@ public extension StravaClient {
         }
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
     
     
@@ -198,12 +198,11 @@ public extension StravaClient {
     ///
     /// - Parameters:
     ///   - athleteId: integer required depending on request type
-    ///
     ///   - page: start page
     ///   - perPage: num records per page
     ///   - completion: the closure called when request is complete
     /// 
-    /// [Read about pagination...](http://limlab.io)
+    /// [Read about pagination...](http://strava.github.io/api/#pagination)
     func listAthletesFriends(athleteId: Int? = nil,
                              page: Int = 0,
                              perPage: Int = 0,
@@ -224,11 +223,22 @@ public extension StravaClient {
         
         req.requestArray(completion)
     }
-    
+
+    /// There are two types of requests, one for the authenticated athlete and another for any athlete specified by an ID.
+    /// In the second case, if the indicated athlete has blocked the authenticated athlete, the result will be an empty array.
+    /// Pagination is supported.
+    /// 
+    /// - Parameters:
+    ///   - id: integer required depending on request type
+    ///   - page: integer optional
+    ///   - per_page: integer optional
+    ///   - completion: the closure called when request is complete
+    ///
+    /// [Read about pagination...](http://strava.github.io/api/#pagination)
     func listAthletesFollowers(athleteId: Int? = nil,
                                page: Int = 0,
                                perPage: Int = 0,
-                               completionHandler: @escaping (StravaResponse<[AthleteSummary]>) -> Void) {
+                               completion: @escaping (StravaResponse<[AthleteSummary]>) -> Void) {
         var req = StravaRequest<AthleteSummary>()
         if let id = athleteId {
             req.pathComponent = "/athletes/\(id)/followers"
@@ -242,13 +252,22 @@ public extension StravaClient {
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
-    
+
+    /// Retrieve the athletes who both the authenticated user and the indicated athlete are following. Pagination is supported.
+    /// 
+    /// - Parameters:
+    ///   - id: integer required
+    ///   - page: integer optional
+    ///   - per_page: integer optional
+    ///   - completion: the closure called when request is complete
+    ///
+    /// [Read about pagination...](http://strava.github.io/api/#pagination)   
     func listAthletesBothFollowing(athleteId: Int,
                                    page: Int = 0,
                                    perPage: Int = 0,
-                                   completionHandler: @escaping (StravaResponse<[AthleteSummary]>) -> Void) {
+                                   completion: @escaping (StravaResponse<[AthleteSummary]>) -> Void) {
         var req = StravaRequest<AthleteSummary>()
         req.pathComponent = "/athletes/\(athleteId)/both-following"
         if page > 0 && perPage > 0 {
@@ -258,33 +277,61 @@ public extension StravaClient {
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
-    func retrieveAthletesZones(completionHandler: @escaping (StravaResponse<Zones>) -> Void) {
+    /// Returns the heart rate and power zones of the requesting athlete
+    /// The min for Zone 1 is always 0 and the max for Zone 5 is always -1
+    ///
+    /// Heart rate
+    ///     custom_zones: boolean - true if athlete has set their own custom heart rate zones
+    ///     zones: array - array of athlete’s heart rate zones
+    /// Power
+    ///     Premium members who have set a functional threshold power (ftp) will see their power zones
+    ///     Power zones are a Premium-only feature. Free members will not see the power part of this endpoint
+    ///
+    /// -Parameters:
+    ///   - completion: the closure called when request is complete
+    func retrieveAthletesZones(completion: @escaping (StravaResponse<Zones>) -> Void) {
         var req = StravaRequest<Zones>()
         req.pathComponent = "/athlete/zones"
         req.method = .get
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
     
+    /// Returns recent (last 4 weeks), year to date and all time stats for a given athlete
+    /// Only available for the authenticated athlete. This is the recommended endpoint when polling for athlete upload events
+    /// 
+    /// - Parameters:
+    ///   - id: integer required must match the authenticated athlete
+    ///   - completion: the closure called when request is complete
     func retrieveAthletesTotalsAndStats(athleteId: Int,
-                                        completionHandler: @escaping (StravaResponse<Stats>) -> Void) {
+                                        completion: @escaping (StravaResponse<Stats>) -> Void) {
         var req = StravaRequest<Stats>()
         req.pathComponent = "/athlete/stats"
         req.method = .get
         req.addParam("id", value: athleteId)
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
     
+    /// Returns an array of segment efforts representing Overall KOMs/QOMs and course records held by the given athlete
+    /// Yearly KOMs are not included. Results are sorted by date, newest first. Pagination is supported
+    /// 
+    /// - Parameters:
+    ///   - id: integer required
+    ///   - page: integer optional
+    ///   - per_page: integer optional
+    ///   - completion: the closure called when request is complete
+    ///
+    /// [Read about pagination...](http://strava.github.io/api/#pagination)
     func listAthletesKOMs(athleteId: Int,
                           page: Int = 0,
                           perPage: Int = 0,
-                          completionHandler: @escaping (StravaResponse<[SegmentEffortSummary]>) -> Void) {
+                          completion: @escaping (StravaResponse<[SegmentEffortSummary]>) -> Void) {
         var req = StravaRequest<SegmentEffortSummary>()
         req.pathComponent = "/athletes/\(athleteId)/koms"
         if page > 0 && perPage > 0 {
@@ -294,26 +341,36 @@ public extension StravaClient {
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
-    
+    /// Requires write permissions, as requested during the authorization process
+    /// 
+    /// - Parameters:
+    ///   - city: string
+    ///   - state: string
+    ///   - country: string
+    ///   - sex: string ‘M’ or ‘F’, any other value will set to null and displayed as “rather not say”
+    ///   - weight: float kilograms
+    ///   - completion: the closure called when request is complete
     func updateAthlete(city: String? = nil,
                        state: String? = nil,
+                       country: String? = nil,
                        sex: Gender? = nil,
                        weight: Float? = nil,
-                       completionHandler: @escaping (StravaResponse<Athlete>) -> Void) {
+                       completion: @escaping (StravaResponse<Athlete>) -> Void) {
         var req = StravaRequest<Athlete>()
         req.pathComponent = "/athlete"
         req.method = .put
         req.addParam("city", value: city)
         req.addParam("state", value: state)
+        req.addParam("country", value: country)
         req.addParam("sex", value: sex)
         req.addParam("weight", value: weight)
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
 }
 
@@ -326,7 +383,7 @@ public extension StravaClient {
     func listActivityComments(activityId: String,
                               page: Int = 0,
                               perPage: Int = 0,
-                              completionHandler: @escaping (StravaResponse<[Comment]>) -> Void) {
+                              completion: @escaping (StravaResponse<[Comment]>) -> Void) {
         var req = StravaRequest<Comment>()
         req.pathComponent = "/activities/\(activityId)/comments"
         
@@ -337,14 +394,14 @@ public extension StravaClient {
         req.method = .get
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
     // Kudoers
     func listActivityKudoers(activityId: String,
                               page: Int = 0,
                               perPage: Int = 0,
-                              completionHandler: @escaping (StravaResponse<[AthleteSummary]>) -> Void) {
+                              completion: @escaping (StravaResponse<[AthleteSummary]>) -> Void) {
         var req = StravaRequest<AthleteSummary>()
         req.pathComponent = "/activities/\(activityId)/kudos"
         
@@ -355,17 +412,17 @@ public extension StravaClient {
         req.method = .get
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
     // Kudoers
-    func listActivityPhotos(activityId: String, completionHandler: @escaping (StravaResponse<[Photo]>) -> Void) {
+    func listActivityPhotos(activityId: String, completion: @escaping (StravaResponse<[Photo]>) -> Void) {
         var req = StravaRequest<Photo>()
         req.pathComponent = "/activities/\(activityId)/photos?photo_sources=true"
         req.method = .get
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
     func createAnActivity(name: String,
@@ -377,7 +434,7 @@ public extension StravaClient {
                           isPrivate: Bool,
                           isTrainer: Bool,
                           isCommute: Bool?,
-                          completionHandler: @escaping (StravaResponse<Activity>) -> Void) {
+                          completion: @escaping (StravaResponse<Activity>) -> Void) {
         var req = StravaRequest<Activity>()
         req.pathComponent = "/activities"
         req.method = .post
@@ -395,17 +452,17 @@ public extension StravaClient {
             req.addParam("commute", value: isCommute ? 1 : 0)
         }
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
     
-    func retrieveAnActivity(activityId: Int64, includeAllEfforts: Bool = false, completionHandler: @escaping (StravaResponse<Activity>) -> Void) {
+    func retrieveAnActivity(activityId: Int64, includeAllEfforts: Bool = false, completion: @escaping (StravaResponse<Activity>) -> Void) {
         var req = StravaRequest<Activity>()
         req.pathComponent = "/activities/\(activityId)"
         req.method = .get
         req.addParam("include_all_efforts", value: includeAllEfforts)
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
     
     func updateAnActivity(activityId: Int64,
@@ -416,7 +473,7 @@ public extension StravaClient {
                           isTrainer: Bool = false,
                           isCommute: Bool = false,
                           gearId: String? = nil, //‘none’ clears gear from activity
-                          completionHandler: @escaping (StravaResponse<Activity>) -> Void) {
+                          completion: @escaping (StravaResponse<Activity>) -> Void) {
         var req = StravaRequest<Activity>()
         req.pathComponent = "/activities/\(activityId)"
         req.method = .put
@@ -430,24 +487,24 @@ public extension StravaClient {
         req.addParam("trainer", value: isTrainer)
         req.addParam("commute", value: isCommute ? 1 : 0)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
     
-    func deleteAnActivity(activityId: Int64, completionHandler: @escaping (Bool, StravaError?) -> Void) {
+    func deleteAnActivity(activityId: Int64, completion: @escaping (Bool, StravaError?) -> Void) {
         var req = StravaRequest<StravaObject>()
         req.pathComponent = "/activities/\(activityId)"
         req.method = .delete
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestWithSuccessConfirmation(completionHandler)
+        req.requestWithSuccessConfirmation(completion)
     }
     
     func listAthletesActivities(afterDate: Date?,
                                 beforeDate: Date?,
                                 page: Int = 0,
                                 perPage: Int = 0,
-                                completionHandler: @escaping (StravaResponse<[ActivitySummary]>) -> Void) {
+                                completion: @escaping (StravaResponse<[ActivitySummary]>) -> Void) {
         var req = StravaRequest<ActivitySummary>()
         req.pathComponent = "/athlete/activities"
         req.method = .get
@@ -461,13 +518,13 @@ public extension StravaClient {
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
     func listRelatedActivities(activityId: Int64,
                                page: Int = 0,
                                perPage: Int = 0,
-                               completionHandler: @escaping (StravaResponse<[ActivitySummary]>) -> Void) {
+                               completion: @escaping (StravaResponse<[ActivitySummary]>) -> Void) {
         var req = StravaRequest<ActivitySummary>()
         req.pathComponent = "/activities/\(activityId)/related"
         req.method = .get
@@ -478,13 +535,13 @@ public extension StravaClient {
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
     func listFriendsActivities(beforeDate: Date?,
                                 page: Int = 0,
                                 perPage: Int = 0,
-                                completionHandler: @escaping (StravaResponse<[ActivitySummary]>) -> Void) {
+                                completion: @escaping (StravaResponse<[ActivitySummary]>) -> Void) {
         var req = StravaRequest<ActivitySummary>()
         req.pathComponent = "/activities/following"
         req.method = .get
@@ -497,29 +554,29 @@ public extension StravaClient {
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
     func listActivityZones(activityId: Int64,
-                           completionHandler: @escaping (StravaResponse<[ActivityZone]>) -> Void) {
+                           completion: @escaping (StravaResponse<[ActivityZone]>) -> Void) {
         var req = StravaRequest<ActivityZone>()
         req.pathComponent = "/activities/\(activityId)/zones"
         req.method = .get
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
     func listActivityLaps(activityId: Int64,
-                           completionHandler: @escaping (StravaResponse<[Lap]>) -> Void) {
+                           completion: @escaping (StravaResponse<[Lap]>) -> Void) {
         var req = StravaRequest<Lap>()
         req.pathComponent = "/activities/\(activityId)/laps"
         req.method = .get
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
 }
 
@@ -527,43 +584,43 @@ public extension StravaClient {
  Clubs
  */
 public extension StravaClient {
-    func retrieveAClub(clubId: String, completionHandler: @escaping (StravaResponse<Club>) -> Void) {
+    func retrieveAClub(clubId: String, completion: @escaping (StravaResponse<Club>) -> Void) {
         var req = StravaRequest<Club>()
         req.pathComponent = "/clubs/\(clubId)"
         req.method = .get
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
     
-    func listClubAnnouncements(clubId: String, completionHandler: @escaping (StravaResponse<[Announcement]>) -> Void) {
+    func listClubAnnouncements(clubId: String, completion: @escaping (StravaResponse<[Announcement]>) -> Void) {
         var req = StravaRequest<Announcement>()
         req.pathComponent = "/clubs/\(clubId)/announcements"
         req.method = .get
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
-    func listClubGroupEvents(clubId: String, completionHandler: @escaping (StravaResponse<[GroupEvent]>) -> Void) {
+    func listClubGroupEvents(clubId: String, completion: @escaping (StravaResponse<[GroupEvent]>) -> Void) {
         var req = StravaRequest<GroupEvent>()
         req.pathComponent = "/clubs/\(clubId)/group_events"
         req.method = .get
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
-    func listAthleteClubs(completionHandler: @escaping (StravaResponse<[ClubSummary]>) -> Void) {
+    func listAthleteClubs(completion: @escaping (StravaResponse<[ClubSummary]>) -> Void) {
         var req = StravaRequest<ClubSummary>()
         req.pathComponent = "/athlete/clubs"
         req.method = .get
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
-    func listClubMembers(clubId: String, page: Int = 0, perPage: Int = 0, completionHandler: @escaping (StravaResponse<[AthleteSummary]>) -> Void) {
+    func listClubMembers(clubId: String, page: Int = 0, perPage: Int = 0, completion: @escaping (StravaResponse<[AthleteSummary]>) -> Void) {
         var req = StravaRequest<AthleteSummary>()
         req.pathComponent = "/clubs/\(clubId)/members"
         req.method = .get
@@ -573,10 +630,10 @@ public extension StravaClient {
         }
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
-    func listClubAdmins(clubId: String, page: Int = 0, perPage: Int = 0, completionHandler: @escaping (StravaResponse<[AthleteSummary]>) -> Void) {
+    func listClubAdmins(clubId: String, page: Int = 0, perPage: Int = 0, completion: @escaping (StravaResponse<[AthleteSummary]>) -> Void) {
         var req = StravaRequest<AthleteSummary>()
         req.pathComponent = "/clubs/\(clubId)/admins"
         req.method = .get
@@ -586,10 +643,10 @@ public extension StravaClient {
         }
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
-    func listClubActivities(clubId: String, before: Date? = nil, page: Int = 0, perPage: Int = 0, completionHandler: @escaping (StravaResponse<[ActivitySummary]>) -> Void) {
+    func listClubActivities(clubId: String, before: Date? = nil, page: Int = 0, perPage: Int = 0, completion: @escaping (StravaResponse<[ActivitySummary]>) -> Void) {
         var req = StravaRequest<ActivitySummary>()
         req.pathComponent = "/clubs/\(clubId)/activities"
         req.method = .get
@@ -602,25 +659,25 @@ public extension StravaClient {
         }
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
-    func joinClub(clubId: String, completionHandler: @escaping (StravaResponse<ClubMembership>) -> Void) {
+    func joinClub(clubId: String, completion: @escaping (StravaResponse<ClubMembership>) -> Void) {
         var req = StravaRequest<ClubMembership>()
         req.pathComponent = "/clubs/\(clubId)/join"
         req.method = .post
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
     
-    func leaveAClub(clubId: String, completionHandler: @escaping (StravaResponse<ClubMembership>) -> Void) {
+    func leaveAClub(clubId: String, completion: @escaping (StravaResponse<ClubMembership>) -> Void) {
         var req = StravaRequest<ClubMembership>()
         req.pathComponent = "/clubs/\(clubId)/leave"
         req.method = .post
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
     
 }
@@ -629,14 +686,14 @@ public extension StravaClient {
  Gear
  */
 public extension StravaClient {
-    func retrieveGear<T: Gear>(gearId: String, completionHandler: @escaping (StravaResponse<T>) -> Void) {
+    func retrieveGear<T: Gear>(gearId: String, completion: @escaping (StravaResponse<T>) -> Void) {
         var req = StravaRequest<T>()
         req.pathComponent = "/gear/\(gearId)"
         req.method = .get
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
 }
 
@@ -644,23 +701,23 @@ public extension StravaClient {
  Routes
  */
 public extension StravaClient {
-    func retrieveARoute(routeId: Int64, completionHandler: @escaping (StravaResponse<Route>) -> Void) {
+    func retrieveARoute(routeId: Int64, completion: @escaping (StravaResponse<Route>) -> Void) {
         var req = StravaRequest<Route>()
         req.pathComponent = "/routes/\(routeId)"
         req.method = .get
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
     
-    func listRoutes(athleteId: Int64, completionHandler: @escaping (StravaResponse<[RouteSummary]>) -> Void) {
+    func listRoutes(athleteId: Int64, completion: @escaping (StravaResponse<[RouteSummary]>) -> Void) {
         var req = StravaRequest<RouteSummary>()
         req.pathComponent = "/athletes/\(athleteId)/routes"
         req.method = .get
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
 }
 
@@ -668,7 +725,7 @@ public extension StravaClient {
  Running Races
  */
 public extension StravaClient {
-    func listRoutes(year: Int? = nil, completionHandler: @escaping (StravaResponse<[RunningRaceSummary]>) -> Void) {
+    func listRoutes(year: Int? = nil, completion: @escaping (StravaResponse<[RunningRaceSummary]>) -> Void) {
         var req = StravaRequest<RunningRaceSummary>()
         req.pathComponent = "/running_races"
         req.method = .get
@@ -677,16 +734,16 @@ public extension StravaClient {
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
-    func retrieveRaceDetails(raceId: Int64, completionHandler: @escaping (StravaResponse<RunningRace>) -> Void) {
+    func retrieveRaceDetails(raceId: Int64, completion: @escaping (StravaResponse<RunningRace>) -> Void) {
         var req = StravaRequest<RunningRace>()
         req.pathComponent = "/running_races/\(raceId)"
         req.method = .get
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
 }
 
@@ -694,16 +751,16 @@ public extension StravaClient {
  Segments
  */
 public extension StravaClient {
-    func retrieveASegment(segmentId: Int64, completionHandler: @escaping (StravaResponse<Segment>) -> Void) {
+    func retrieveASegment(segmentId: Int64, completion: @escaping (StravaResponse<Segment>) -> Void) {
         var req = StravaRequest<Segment>()
         req.pathComponent = "/segments/\(segmentId)"
         req.method = .get
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
     
-    func listStarredSegments(page: Int = 0, perPage: Int = 0, completionHandler: @escaping (StravaResponse<[SegmentSummary]>) -> Void) {
+    func listStarredSegments(page: Int = 0, perPage: Int = 0, completion: @escaping (StravaResponse<[SegmentSummary]>) -> Void) {
         var req = StravaRequest<SegmentSummary>()
         req.pathComponent = "/segments/starred"
         req.method = .get
@@ -715,17 +772,17 @@ public extension StravaClient {
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
-    func starASegment(segmentId: Int64, starred: Bool, completionHandler: @escaping (StravaResponse<Segment>) -> Void) {
+    func starASegment(segmentId: Int64, starred: Bool, completion: @escaping (StravaResponse<Segment>) -> Void) {
         var req = StravaRequest<Segment>()
         req.pathComponent = "/segments/\(segmentId)/starred"
         req.method = .put
         req.addParam("starred", value: starred)
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
     
     func listEfforts(segmentId: Int64,
@@ -734,7 +791,7 @@ public extension StravaClient {
                      endDateLocal: Date?,
                      page: Int = 0,
                      perPage: Int = 0,
-                     completionHandler: @escaping (StravaResponse<[ActivitySummary]>) -> Void) {
+                     completion: @escaping (StravaResponse<[ActivitySummary]>) -> Void) {
         var req = StravaRequest<ActivitySummary>()
         req.pathComponent = "/segments/\(segmentId)/all_efforts"
         req.method = .get
@@ -749,7 +806,7 @@ public extension StravaClient {
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
     func segmentLeaderboards(segmentId: Int64,
@@ -762,7 +819,7 @@ public extension StravaClient {
                      contextEntries: Int = 2,
                      page: Int = 0,
                      perPage: Int = 0,
-                     completionHandler: @escaping (StravaResponse<[ActivitySummary]>) -> Void) {
+                     completion: @escaping (StravaResponse<[ActivitySummary]>) -> Void) {
         var req = StravaRequest<ActivitySummary>()
         req.pathComponent = "/segments/\(segmentId)/all_efforts"
         req.method = .get
@@ -782,14 +839,14 @@ public extension StravaClient {
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
     func segmentExplorer(bounds: Bounds,
                          activityType: ActivityType? = .ride,
                          minClimbCategory: ClimbCategory? = nil,
                          maxClimbCategory: ClimbCategory? = nil,
-                         completionHandler: @escaping (StravaResponse<[SegmentSummary]>) -> Void) {
+                         completion: @escaping (StravaResponse<[SegmentSummary]>) -> Void) {
         var req = StravaRequest<SegmentSummary>()
         req.pathComponent = "/segments/explore"
         req.method = .get
@@ -801,7 +858,7 @@ public extension StravaClient {
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
 }
 
@@ -809,14 +866,14 @@ public extension StravaClient {
  Segment Efforts
  */
 public extension StravaClient {
-    func retrieveASegmentEffort(effortId: Int64, completionHandler: @escaping (StravaResponse<SegmentEffort>) -> Void) {
+    func retrieveASegmentEffort(effortId: Int64, completion: @escaping (StravaResponse<SegmentEffort>) -> Void) {
         var req = StravaRequest<SegmentEffort>()
         req.pathComponent = "/segment_efforts/\(effortId)"
         req.method = .get
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
 }
 
@@ -828,7 +885,7 @@ public extension StravaClient {
                                  types: [StreamType],
                                  resolution: Resolution? = nil,
                                  seriesType: SeriesType? = nil,
-                                 completionHandler: @escaping (StravaResponse<[Stream]>) -> Void) {
+                                 completion: @escaping (StravaResponse<[Stream]>) -> Void) {
         let strTypes = types.map { $0.rawValue }
         var req = StravaRequest<Stream>()
         req.pathComponent = "/activities/\(activityId)/streams/\(strTypes.joined(separator: ","))"
@@ -841,14 +898,14 @@ public extension StravaClient {
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
     func retrieveEffortStreams(effortId: Int64,
                                  types: [StreamType],
                                  resolution: Resolution? = nil,
                                  seriesType: SeriesType? = nil,
-                                 completionHandler: @escaping (StravaResponse<[Stream]>) -> Void) {
+                                 completion: @escaping (StravaResponse<[Stream]>) -> Void) {
         let strTypes = types.map { $0.rawValue }
         var req = StravaRequest<Stream>()
         req.pathComponent = "/segment_efforts/\(effortId)/streams/\(strTypes.joined(separator: ","))"
@@ -861,14 +918,14 @@ public extension StravaClient {
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
     func retrieveSegmentStreams(segmentId: Int64,
                                types: [StreamType],
                                resolution: Resolution? = nil,
                                seriesType: SeriesType? = nil,
-                               completionHandler: @escaping (StravaResponse<[Stream]>) -> Void) {
+                               completion: @escaping (StravaResponse<[Stream]>) -> Void) {
         let strTypes = types.map { $0.rawValue }
         var req = StravaRequest<Stream>()
         req.pathComponent = "/segment_efforts/\(segmentId)/streams/\(strTypes.joined(separator: ","))"
@@ -881,17 +938,17 @@ public extension StravaClient {
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
     
-    func retrieveRouteStreams(routeId: Int64, completionHandler: @escaping (StravaResponse<[Stream]>) -> Void) {
+    func retrieveRouteStreams(routeId: Int64, completion: @escaping (StravaResponse<[Stream]>) -> Void) {
         var req = StravaRequest<Stream>()
         req.pathComponent = "/routes/\(routeId)/streams/"
         req.method = .get
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestArray(completionHandler)
+        req.requestArray(completion)
     }
 }
 
@@ -911,7 +968,7 @@ public extension StravaClient {
                           dataType: ActivityUploadType,
                           externalId: String,
                           file: Data,
-                          completionHandler: @escaping (StravaResponse<ActivityUploadStatus>) -> Void) {
+                          completion: @escaping (StravaResponse<ActivityUploadStatus>) -> Void) {
         var req = StravaRequest<ActivityUploadStatus>()
         req.pathComponent = "/uploads"
         req.method = .post
@@ -929,14 +986,14 @@ public extension StravaClient {
         })
     }
     
-    func checkUploadStatus(id: Int64, completionHandler: @escaping (StravaResponse<ActivityUploadStatus>) -> Void) {
+    func checkUploadStatus(id: Int64, completion: @escaping (StravaResponse<ActivityUploadStatus>) -> Void) {
         var req = StravaRequest<ActivityUploadStatus>()
         req.pathComponent = "/uploads/\(id)"
         req.method = .get
         
         req.addToken(token: StravaClient.instance.authToken!)
         
-        req.requestObject(completionHandler)
+        req.requestObject(completion)
     }
 }
 
