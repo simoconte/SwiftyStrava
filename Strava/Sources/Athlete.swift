@@ -17,7 +17,7 @@ public enum MeasurementPreference: String {
     case meters = "meters"
 }
 
-open class Athlete: AthleteSummary {
+public class Athlete: AthleteSummary {
     var followerCount: Int = 0
     var friendCount: Int = 0
     var mutualFriendCount: Int = 0

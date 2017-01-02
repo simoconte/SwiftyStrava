@@ -9,7 +9,7 @@
 import AlamofireObjectMapper
 import ObjectMapper
 
-open class Comment: StravaObject {
+public class Comment: StravaObject {
     
     var activityId: Int = 0
     var text: String = ""

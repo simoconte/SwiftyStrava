@@ -49,19 +49,19 @@ public enum WorkoutType: Int {
     case workout
 }
 
-typealias GeoCoordinate = (lat: Double, long: Double)
+public typealias GeoCoordinate = (lat: Double, long: Double)
 
-open class ActivitySummary: StravaObject {
-    var externalId: String?
-    var uploadId: Int = 0
+public class ActivitySummary: StravaObject {
+    var externalId: String? // Provided at upload
+    var uploadId: Int64?
     var athlete: AthleteSummary?
     var name: String?
-    var distance: Float = 0
-    var movingTime: Int = 0
-    var elapsedTime: Int = 0
-    var totalElevationGain: Float = 0
-    var elevationHigh: Float = 0
-    var elevationLow: Float = 0
+    var distance: Float = 0 // Meters
+    var movingTime: Int = 0 // Seconds
+    var elapsedTime: Int = 0 // Seconds
+    var totalElevationGain: Float = 0 // Meters
+    var elevationHigh: Float = 0 // Meters
+    var elevationLow: Float = 0 // Meters
     var type: ActivityType = .ride
     var startDate: Date?
     var startDateLocal: Date?
@@ -71,17 +71,17 @@ open class ActivitySummary: StravaObject {
     var achievementCount: Int = 0
     var kudosCount: Int = 0
     var commentsCount: Int = 0
-    var athleteCount: Int = 1
-    var instagramPhotoCount: Int = 0
-    var totalPhotoCount: Int = 0
-    var route: Route?
+    var athleteCount: Int = 1 // Number of athletes taking part in this “group activity”.
+    var instagramPhotoCount: Int = 0 // Number of Instagram photos
+    var totalPhotoCount: Int = 0 // Total number of photos (Instagram and Strava)
+    var route: Route? // Detailed representation of the route
     var isTrainer: Bool = false
     var isCommute: Bool = false
     var isManual: Bool = false
     var isPrivate: Bool = false
     var flagged: Bool = false
     var workoutType: WorkoutType?
-    var gearId: String?
+    var gearId: String? // Corresponds to a bike or pair of shoes included in
     var averageSpeed: Float = 0 // Meters per second
     var maxSpeed: Float = 0 // Meters per second
     var averageCadence: Float? // RPM
@@ -90,12 +90,12 @@ open class ActivitySummary: StravaObject {
     var maxWatts: Int? // Rides only
     var weightedAverageWatts: Int? // Rides with power meter data only similar to xPower or Normalized Power
     var kiloJoules: Float = 0 // Rides only uses estimated power if necessary
-    var deviceWatts: Bool = false
-    var hasHeartrate: Bool = false
-    var averageHeartrate: Float = 0
-    var maxHeartrate: Int?
+    var deviceWatts: Bool = false // `true` if the watts are from a power meter, false if estimated
+    var hasHeartrate: Bool = false // `true` if recorded with heartrate
+    var averageHeartrate: Float = 0 // Only if recorded with heartrate average over moving portion
+    var maxHeartrate: Int? // Only if recorded with heartrate
     var sufferScore: Int? // A measure of heartrate intensity, available on premium users’ activities only
-    var hasKudoed: Bool = false
+    var hasKudoed: Bool = false // `true` if the authenticated athlete has kudoed this activity
     
     override public func mapping(map: Map) {
         super.mapping(map: map)

@@ -9,7 +9,7 @@
 import AlamofireObjectMapper
 import ObjectMapper
 
-open class Photo: StravaObject {
+public class Photo: StravaObject {
     var activityId: Int64?
     var urls: AnyObject?
     var caption: String?

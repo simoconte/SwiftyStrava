@@ -15,7 +15,7 @@ public enum FrameType: Int {
     case TT
 }
 
-open class Bike: Gear {
+public class Bike: Gear {
     var frameType: FrameType?
     
     override public func mapping(map: Map) {

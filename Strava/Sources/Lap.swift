@@ -9,7 +9,7 @@
 import ObjectMapper
 import AlamofireObjectMapper
 
-open class Lap: StravaObject {
+public class Lap: StravaObject {
     var activity: StravaObject?
     var athlete: StravaObject?
     var averageCadence: Float = 0

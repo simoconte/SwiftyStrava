@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-open class GearSummary: StravaObject {
+public class GearSummary: StravaObject {
     var primary: Bool = false
     var name: String = ""
     var distance: Float = 0.0

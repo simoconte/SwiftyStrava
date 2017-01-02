@@ -9,7 +9,7 @@
 import AlamofireObjectMapper
 import ObjectMapper
 
-open class Announcement: StravaObject {
+public class Announcement: StravaObject {
     
     var clubId: Int = 0
     var createdAt: Date?

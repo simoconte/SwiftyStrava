@@ -15,7 +15,7 @@ public enum SkillLevel: Int {
     case Hammerfast
 }
 
-open class GroupEvent: StravaObject {
+public class GroupEvent: StravaObject {
     var title: String = ""
     var description: String = ""
     var clubId: Int = 0

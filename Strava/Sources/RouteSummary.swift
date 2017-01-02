@@ -22,7 +22,7 @@ public enum RouteSubType: Int {
     case Mixed
 }
 
-open class RouteSummary: StravaObject {
+public class RouteSummary: StravaObject {
     var name: String = ""
     var description: String = ""
     var athlete: StravaObject?

@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-open class SegmentEffortSummary: StravaObject {
+public class SegmentEffortSummary: StravaObject {
     var name: String?
     var activity: StravaObject?
     var athlete: StravaObject?

@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-open class ClubMembership: StravaObject {
+public class ClubMembership: StravaObject {
     var success: Bool = false
     var active: Bool = false
     var membership: MembershipStatus?

@@ -9,7 +9,7 @@
 import AlamofireObjectMapper
 import ObjectMapper
 
-open class InstagramPhoto: Photo {
+public class InstagramPhoto: Photo {
     var ref: String?
     var uid: String?
     var type: String = "InstagramPhoto"

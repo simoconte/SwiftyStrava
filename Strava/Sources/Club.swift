@@ -21,7 +21,7 @@ public enum MembershipStatus: String {
     case Pending = "pending"
 }
 
-open class Club: ClubSummary {
+public class Club: ClubSummary {
     var description: String?
     var clubType: ClubType = .Other
     var membership: MembershipStatus? // Membership status of the requesting athlete "member", "pending", null (not a member and have not requested join)

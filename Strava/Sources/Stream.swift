@@ -34,7 +34,7 @@ public enum SeriesType: String {
     case distance = "distance"
 }
 
-open class Stream: StravaObject {
+public class Stream: StravaObject {
     var type: StreamType?
     var data: AnyObject?
     var seriesType: StreamType = .Time

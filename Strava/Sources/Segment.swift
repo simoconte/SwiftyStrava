@@ -9,7 +9,7 @@
 import AlamofireObjectMapper
 import ObjectMapper
 
-open class Segment: SegmentSummary {
+public class Segment: SegmentSummary {
     var createdAt: Date?
     var updatedAt: Date?
     var totalElevationGain: Float = 0

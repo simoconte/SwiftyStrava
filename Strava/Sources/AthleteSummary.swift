@@ -19,7 +19,7 @@ public enum FollowingStatus: String {
     case blocked = "blocked"
 }
     
-open class AthleteSummary: StravaObject {
+public class AthleteSummary: StravaObject {
     // Profile
     var firstName: String?
     var lastName: String?

@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-open class RunningRace: RunningRaceSummary {
+public class RunningRace: RunningRaceSummary {
     var routeIds: [Int64] = []
     var websiteURL: String?
     

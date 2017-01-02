@@ -9,7 +9,7 @@
 import AlamofireObjectMapper
 import ObjectMapper
 
-open class SegmentEffort: StravaObject {
+public class SegmentEffort: StravaObject {
     var name: String = ""
     var activity: StravaObject?
     var athlete: StravaObject?

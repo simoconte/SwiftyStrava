@@ -10,7 +10,7 @@ import AlamofireObjectMapper
 import ObjectMapper
 
 
-open class Route: RouteSummary {
+public class Route: RouteSummary {
     var segments: [Segment] = [Segment]()
     
     override public func mapping(map: Map) {

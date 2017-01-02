@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-open class Gear: GearSummary {
+public class Gear: GearSummary {
     var brandName: String?
     var modelName: String?
         

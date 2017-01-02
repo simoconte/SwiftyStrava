@@ -15,7 +15,7 @@ enum RunningRaceType: Int {
     case xc
 }
 
-open class RunningRaceSummary: StravaObject {
+public class RunningRaceSummary: StravaObject {
     var name: String = ""
     var runningRaceType: RunningRaceType = .road
     var distance: Float = 0
@@ -23,7 +23,7 @@ open class RunningRaceSummary: StravaObject {
     var city: String?
     var state: String?
     var country: String?
-    var measurementPreference: MeasurementPreference = .Meters
+    var measurementPreference: MeasurementPreference = .meters
     var url: String?
     
     override public func mapping(map: Map) {

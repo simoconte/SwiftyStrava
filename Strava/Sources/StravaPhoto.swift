@@ -9,7 +9,7 @@
 import AlamofireObjectMapper
 import ObjectMapper
 
-open class StravaPhoto: Photo {
+public class StravaPhoto: Photo {
     var uniqueId: String?
     
     override public func mapping(map: Map) {

@@ -15,7 +15,7 @@ public enum SportType: String {
     case Other = "other"
 }
 
-open class ClubSummary: StravaObject {
+public class ClubSummary: StravaObject {
     var name: String = ""
     var profileMedium: String? // URL to a 60x60 pixel profile picture
     var profile: String? // URL to a 124x124 pixel profile picture

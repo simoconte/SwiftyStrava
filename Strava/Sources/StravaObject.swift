@@ -9,7 +9,7 @@
 import AlamofireObjectMapper
 import ObjectMapper
 
-open class StravaObject: Mappable {
+public class StravaObject: Mappable {
     var id: Int64?
     var resourceState: Int?
     

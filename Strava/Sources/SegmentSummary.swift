@@ -58,7 +58,7 @@ public struct Bounds {
 
 public typealias ClimbCategory = Int
 
-open class SegmentSummary: StravaObject {
+public class SegmentSummary: StravaObject {
     var name: String = ""
     var activityType: ActivityType = .ride
     var distance: Float = 0
