@@ -11,8 +11,8 @@ import ObjectMapper
 
 public class Comment: StravaObject {
     
-    var activityId: Int = 0
-    var text: String = ""
+    var activityId: Int64?
+    var text: String?
     var athlete: AthleteSummary?
     var createdAt: Date?
     
