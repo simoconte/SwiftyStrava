@@ -6,11 +6,10 @@
 //  Copyright © 2016 Oleksandr Glagoliev. All rights reserved.
 //
 
-import AlamofireObjectMapper
 import ObjectMapper
 
 open class PhotoSummary: Mappable {
-    var count: UInt8 = 1
+    var count: UInt8 = 1 // Total number of photos (Instagram + nativ
     var primary: PrimaryPhoto?
     
     required public init?(map: Map){}

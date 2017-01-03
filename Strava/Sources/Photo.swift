@@ -6,12 +6,11 @@
 //  Copyright © 2016 Oleksandr Glagoliev. All rights reserved.
 //
 
-import AlamofireObjectMapper
 import ObjectMapper
 
 public class Photo: StravaObject {
     var activityId: Int64?
-    var urls: AnyObject?
+    var urls: [Int: String]? //map of requested size (the “size” parameter) to a URL for the photo resource
     var caption: String?
     var source: PhotoSource?
     var uploadedAt: Date?

@@ -6,7 +6,6 @@
 //  Copyright © 2016 Oleksandr Glagoliev. All rights reserved.
 //
 
-import AlamofireObjectMapper
 import ObjectMapper
 
 public enum PhotoSource: UInt8 {
@@ -15,9 +14,9 @@ public enum PhotoSource: UInt8 {
 }
 
 open class PrimaryPhoto: Mappable {
-    var id:	Int64?
+    var id:	Int64? // Unique identifier for Instagram photos (nil for native photos)
     var source: PhotoSource?
-    var uniqueId: String?
+    var uniqueId: String? // Unique identifier for native photos (nil for Instagram photos)
     var urls: AnyObject?
     
     required public init?(map: Map){}
