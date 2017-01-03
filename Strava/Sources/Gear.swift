@@ -11,11 +11,13 @@ import ObjectMapper
 public class Gear: GearSummary {
     var brandName: String?
     var modelName: String?
+    var description: String?
         
     override public func mapping(map: Map) {
         super.mapping(map: map)
         
         brandName <- map["brand_name"]
         modelName <- map["model_name"]
+        description <- map["description"]
     }
 }

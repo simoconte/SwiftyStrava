@@ -10,8 +10,8 @@ import ObjectMapper
 
 public enum FrameType: Int {
     case MTB = 1
-    case Cross
-    case Road
+    case cross
+    case road
     case TT
 }
 

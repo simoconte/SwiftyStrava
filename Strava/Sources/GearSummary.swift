@@ -15,8 +15,8 @@ public class GearSummary: StravaObject {
     
     override public func mapping(map: Map) {
         super.mapping(map: map)
-        primary <- map["primary"]
-        name <- map["name"]
-        distance <- map["distance"]
+        primary <- map["primary"] // Athlete’s default bike/shoes
+        name <- map["name"] // Name athlete entered for bikes, generated from brand and model for shoes
+        distance <- map["distance"] // Meters
     }
 }
