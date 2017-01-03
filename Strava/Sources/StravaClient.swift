@@ -602,8 +602,8 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
-    func listClubGroupEvents(clubId: String, completion: @escaping (StravaResponse<[GroupEvent]>) -> Void) {
-        var req = StravaRequest<GroupEvent>()
+    func listClubGroupEvents(clubId: String, completion: @escaping (StravaResponse<[GroupEventSummary]>) -> Void) {
+        var req = StravaRequest<GroupEventSummary>()
         req.pathComponent = "/clubs/\(clubId)/group_events"
         req.method = .get
         req.addToken(token: StravaClient.instance.authToken!)
