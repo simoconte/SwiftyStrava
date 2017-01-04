@@ -16,7 +16,7 @@ enum RunningRaceType: Int {
 }
 
 public class RunningRaceSummary: StravaObject {
-    var name: String = ""
+    var name: String?
     var runningRaceType: RunningRaceType = .road
     var distance: Float = 0
     var startDateLocal: Date?

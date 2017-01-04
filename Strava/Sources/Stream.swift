@@ -6,27 +6,26 @@
 //  Copyright © 2016 Oleksandr Glagoliev. All rights reserved.
 //
 
-import AlamofireObjectMapper
 import ObjectMapper
 
 public enum StreamType: String {
-    case Time = "time"
-    case Coordinate = "latlng"
-    case Distance = "distance"
-    case Altitude = "altitude"
-    case VelocitySmooth = "velocity_smooth"
-    case HeartRate = "heartrate"
-    case Cadence = "cadence"
-    case Watts = "watts"
-    case Temp = "temp"
-    case Moving = "moving"
-    case GradeSmooth = "grade_smooth"
+    case time = "time"
+    case coordinate = "latlng"
+    case distance = "distance"
+    case altitude = "altitude"
+    case velocitySmooth = "velocity_smooth"
+    case heartRate = "heartrate"
+    case cadence = "cadence"
+    case watts = "watts"
+    case temp = "temp"
+    case moving = "moving"
+    case gradeSmooth = "grade_smooth"
 }
 
 public enum Resolution: String {
-    case Low = "low"
-    case Medium = "medium"
-    case High = "high"
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
 }
 
 public enum SeriesType: String {
@@ -37,7 +36,7 @@ public enum SeriesType: String {
 public class Stream: StravaObject {
     var type: StreamType?
     var data: AnyObject?
-    var seriesType: StreamType = .Time
+    var seriesType: StreamType = .time
     var originalSize: Int = 0
     var resolution: Resolution?
     
