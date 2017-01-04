@@ -8,11 +8,13 @@
 
 import ObjectMapper
 
-open class ActivityUploadStatus: Mappable {
+public class ActivityUploadStatus: Mappable {
     
     var id: Int64?
     var externalId: String?
+    /// If there was an error during processing, this will contain a human a human readable error message that may include escaped HTML
     var error: String? = nil
+    /// Describes the error, possible values: ‘Your activity is still being processed.’, ‘The created activity has been deleted.’, ‘There was an error processing your activity.’, ‘Your activity is ready.’
     var status: String? = nil
     var activityId: Int64? = nil
     
