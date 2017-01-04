@@ -10,25 +10,25 @@ import AlamofireObjectMapper
 import ObjectMapper
 
 public enum RouteType: Int {
-    case Ride = 1
-    case Run = 2
+    case ride = 1
+    case run = 2
 }
 
 public enum RouteSubType: Int {
-    case Road = 1
+    case road = 1
     case MTB
     case CX
-    case Trail
-    case Mixed
+    case trail
+    case mixed
 }
 
 public class RouteSummary: StravaObject {
-    var name: String = ""
-    var description: String = ""
+    var name: String?
+    var description: String?
     var athlete: StravaObject?
-    var distance: Float = 0
-    var elevationGain: Float = 0
-//    var map: String = ""
+    var distance: Float = 0 // Meters
+    var elevationGain: Float = 0 // Meters
+    var mapObject: AnyObject?
     var type: RouteType?
     var subType: RouteSubType?
     var isPrivate: Bool = true
@@ -43,7 +43,7 @@ public class RouteSummary: StravaObject {
         athlete <- map["athlete"]
         distance <- map["distance"]
         elevationGain <- map["elevation_gain"]
-//        map <- map["map"]
+        mapObject <- map["map"]
         type <- map["type"]
         subType <- map["sub_type"]
         isPrivate <- map["private"]
