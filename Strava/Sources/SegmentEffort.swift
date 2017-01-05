@@ -6,7 +6,6 @@
 //  Copyright © 2016 Oleksandr Glagoliev. All rights reserved.
 //
 
-import AlamofireObjectMapper
 import ObjectMapper
 
 public class SegmentEffort: StravaObject {
