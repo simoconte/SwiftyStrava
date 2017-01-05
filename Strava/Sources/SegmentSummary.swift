@@ -59,19 +59,19 @@ public struct Bounds {
 public typealias ClimbCategory = Int
 
 public class SegmentSummary: StravaObject {
-    var name: String = ""
+    var name: String?
     var activityType: ActivityType = .ride
-    var distance: Float = 0
+    var distance: Float = 0 // Meters
     var averageGrade: Float = 0 // Percent
     var maximumGrade: Float = 0 // Percent
-    var elevationHigh: Float = 0
-    var elevationLow: Float = 0
+    var elevationHigh: Float = 0 // Meters
+    var elevationLow: Float = 0 // Meters
     var startCoordinate: GeoCoordinate?
     var endCoordinate: GeoCoordinate?
     var climbCategory: ClimbCategory = 0
-    var city: String = ""
-    var state: String = ""
-    var country: String = ""
+    var city: String?
+    var state: String?
+    var country: String?
     var isPrivate: Bool = false
     var starred: Bool = false
     var hazardous: Bool = true

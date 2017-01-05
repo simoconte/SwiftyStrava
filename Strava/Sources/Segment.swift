@@ -13,7 +13,7 @@ public class Segment: SegmentSummary {
     var createdAt: Date?
     var updatedAt: Date?
     var totalElevationGain: Float = 0
-//    var map: String = "" // Includes a summary polyline
+    var segmentMap: [String: AnyObject?]? // Includes a summary polyline
     var effortCount: Int = 0
     var athleteCount: Int = 0
     var starCount: Int = 0
@@ -24,7 +24,7 @@ public class Segment: SegmentSummary {
         createdAt <- (map["created_at"], StravaDateTransform())
         updatedAt <- (map["updated_at"], StravaDateTransform())
         totalElevationGain <- map["total_elevation_gain"]
-//        map <- map["map"]
+        segmentMap <- map["map"]
         effortCount <- map["effort_count"]
         athleteCount <- map["athlete_count"]
         starCount <- map["star_count"]
