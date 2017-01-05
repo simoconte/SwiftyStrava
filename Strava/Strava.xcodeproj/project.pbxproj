@@ -44,7 +44,7 @@
 		A5432EA71E106F92003196D5 /* Deauth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E4C1E1068A4003196D5 /* Deauth.swift */; };
 		A5432EA81E106F92003196D5 /* Gear.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E4D1E1068A4003196D5 /* Gear.swift */; };
 		A5432EA91E106F92003196D5 /* GearSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E4E1E1068A4003196D5 /* GearSummary.swift */; };
-		A5432EAA1E106F92003196D5 /* GroupEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E4F1E1068A4003196D5 /* GroupEvent.swift */; };
+		A5432EAA1E106F92003196D5 /* GroupEventSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E4F1E1068A4003196D5 /* GroupEventSummary.swift */; };
 		A5432EAB1E106F92003196D5 /* InstagramPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E501E1068A4003196D5 /* InstagramPhoto.swift */; };
 		A5432EAC1E106F92003196D5 /* Lap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E511E1068A4003196D5 /* Lap.swift */; };
 		A5432EAD1E106F92003196D5 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5432E521E1068A4003196D5 /* Leaderboard.swift */; };
@@ -67,6 +67,9 @@
 		A585125C1E13174600A2BEE8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58512591E13174600A2BEE8 /* Alamofire.framework */; };
 		A585125D1E13174600A2BEE8 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A585125A1E13174600A2BEE8 /* AlamofireObjectMapper.framework */; };
 		A585125E1E13174600A2BEE8 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A585125B1E13174600A2BEE8 /* ObjectMapper.framework */; };
+		A5FC94CE1E1ADB0C004E1F02 /* SplitSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FC94CD1E1ADB0C004E1F02 /* SplitSummary.swift */; };
+		A5FC94D11E1C3D01004E1F02 /* RouteMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FC94D01E1C3D01004E1F02 /* RouteMeta.swift */; };
+		A5FC94D91E1D68DE004E1F02 /* MapSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FC94D81E1D68DE004E1F02 /* MapSummary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,7 +100,7 @@
 		A5432E4C1E1068A4003196D5 /* Deauth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deauth.swift; sourceTree = "<group>"; };
 		A5432E4D1E1068A4003196D5 /* Gear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gear.swift; sourceTree = "<group>"; };
 		A5432E4E1E1068A4003196D5 /* GearSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearSummary.swift; sourceTree = "<group>"; };
-		A5432E4F1E1068A4003196D5 /* GroupEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEvent.swift; sourceTree = "<group>"; };
+		A5432E4F1E1068A4003196D5 /* GroupEventSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEventSummary.swift; sourceTree = "<group>"; };
 		A5432E501E1068A4003196D5 /* InstagramPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramPhoto.swift; sourceTree = "<group>"; };
 		A5432E511E1068A4003196D5 /* Lap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lap.swift; sourceTree = "<group>"; };
 		A5432E521E1068A4003196D5 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
@@ -130,6 +133,9 @@
 		A58512591E13174600A2BEE8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		A585125A1E13174600A2BEE8 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlamofireObjectMapper.framework; sourceTree = "<group>"; };
 		A585125B1E13174600A2BEE8 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = "<group>"; };
+		A5FC94CD1E1ADB0C004E1F02 /* SplitSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitSummary.swift; sourceTree = "<group>"; };
+		A5FC94D01E1C3D01004E1F02 /* RouteMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteMeta.swift; sourceTree = "<group>"; };
+		A5FC94D81E1D68DE004E1F02 /* MapSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSummary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,44 +203,18 @@
 		A5432E841E10691C003196D5 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				A5FC94DA1E1D6A1B004E1F02 /* Uploads */,
+				A5FC94D71E1D678D004E1F02 /* Routes */,
 				A5432E881E106A85003196D5 /* Base */,
-				A5432E3E1E1068A4003196D5 /* Activity.swift */,
-				A5432E3F1E1068A4003196D5 /* ActivitySummary.swift */,
-				A5432E401E1068A4003196D5 /* ActivityUploadStatus.swift */,
-				A5432E411E1068A4003196D5 /* ActivityUploadType.swift */,
-				A5432E421E1068A4003196D5 /* ActivityZone.swift */,
-				A5432E431E1068A4003196D5 /* Announcement.swift */,
-				A5432E441E1068A4003196D5 /* Athlete.swift */,
-				A5432E451E1068A4003196D5 /* AthleteSummary.swift */,
-				A5432E461E1068A4003196D5 /* Auth.swift */,
-				A5432E471E1068A4003196D5 /* Bike.swift */,
-				A5432E481E1068A4003196D5 /* Club.swift */,
-				A5432E491E1068A4003196D5 /* ClubMembership.swift */,
-				A5432E4A1E1068A4003196D5 /* ClubSummary.swift */,
-				A5432E4B1E1068A4003196D5 /* Comment.swift */,
-				A5432E4C1E1068A4003196D5 /* Deauth.swift */,
-				A5432E4D1E1068A4003196D5 /* Gear.swift */,
-				A5432E4E1E1068A4003196D5 /* GearSummary.swift */,
-				A5432E4F1E1068A4003196D5 /* GroupEvent.swift */,
-				A5432E501E1068A4003196D5 /* InstagramPhoto.swift */,
-				A5432E511E1068A4003196D5 /* Lap.swift */,
-				A5432E521E1068A4003196D5 /* Leaderboard.swift */,
-				A5432E531E1068A4003196D5 /* LeaderboardEntry.swift */,
-				A5432E551E1068A4003196D5 /* Photo.swift */,
-				A5432E561E1068A4003196D5 /* PhotoSummary.swift */,
-				A5432E571E1068A4003196D5 /* PrimaryPhoto.swift */,
-				A5432E581E1068A4003196D5 /* Route.swift */,
-				A5432E591E1068A4003196D5 /* RouteSummary.swift */,
-				A5432E5A1E1068A4003196D5 /* RunningRace.swift */,
-				A5432E5B1E1068A4003196D5 /* RunningRaceSummary.swift */,
-				A5432E5C1E1068A4003196D5 /* Segment.swift */,
-				A5432E5D1E1068A4003196D5 /* SegmentEffort.swift */,
-				A5432E5E1E1068A4003196D5 /* SegmentEffortSummary.swift */,
-				A5432E5F1E1068A4003196D5 /* SegmentSummary.swift */,
-				A5432E601E1068A4003196D5 /* Stats.swift */,
-				A5432E631E1068A4003196D5 /* StravaPhoto.swift */,
-				A5432E641E1068A4003196D5 /* Stream.swift */,
-				A5432E661E1068A4003196D5 /* Zones.swift */,
+				A5FC94CB1E1AD4AC004E1F02 /* Authentication */,
+				A5FC94CA1E1AD313004E1F02 /* Athletes */,
+				A5FC94CC1E1AD5A8004E1F02 /* Activities */,
+				A5FC94CF1E1ADD6D004E1F02 /* Clubs */,
+				A5FC94D31E1C4026004E1F02 /* Gear */,
+				A5FC94DB1E1D6B3C004E1F02 /* RunningRaces */,
+				A5FC94DC1E1D6BD3004E1F02 /* Streams */,
+				A5FC94DD1E1ECC14004E1F02 /* Segments */,
+				A5FC94DF1E1ECE52004E1F02 /* SegmentEfforts */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -271,6 +251,155 @@
 				A585125B1E13174600A2BEE8 /* ObjectMapper.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A5FC94CA1E1AD313004E1F02 /* Athletes */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E441E1068A4003196D5 /* Athlete.swift */,
+				A5432E451E1068A4003196D5 /* AthleteSummary.swift */,
+				A5432E601E1068A4003196D5 /* Stats.swift */,
+				A5432E661E1068A4003196D5 /* Zones.swift */,
+			);
+			name = Athletes;
+			sourceTree = "<group>";
+		};
+		A5FC94CB1E1AD4AC004E1F02 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E4C1E1068A4003196D5 /* Deauth.swift */,
+				A5432E461E1068A4003196D5 /* Auth.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		A5FC94CC1E1AD5A8004E1F02 /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				A5FC94D61E1C41D2004E1F02 /* Photos */,
+				A5FC94D41E1C41C0004E1F02 /* Comments */,
+				A5432E3E1E1068A4003196D5 /* Activity.swift */,
+				A5432E3F1E1068A4003196D5 /* ActivitySummary.swift */,
+				A5FC94CD1E1ADB0C004E1F02 /* SplitSummary.swift */,
+				A5432E421E1068A4003196D5 /* ActivityZone.swift */,
+				A5432E511E1068A4003196D5 /* Lap.swift */,
+			);
+			name = Activities;
+			sourceTree = "<group>";
+		};
+		A5FC94CF1E1ADD6D004E1F02 /* Clubs */ = {
+			isa = PBXGroup;
+			children = (
+				A5FC94D21E1C3FF2004E1F02 /* GroupEvents */,
+				A5432E481E1068A4003196D5 /* Club.swift */,
+				A5432E491E1068A4003196D5 /* ClubMembership.swift */,
+				A5432E4A1E1068A4003196D5 /* ClubSummary.swift */,
+				A5432E431E1068A4003196D5 /* Announcement.swift */,
+			);
+			name = Clubs;
+			sourceTree = "<group>";
+		};
+		A5FC94D21E1C3FF2004E1F02 /* GroupEvents */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E4F1E1068A4003196D5 /* GroupEventSummary.swift */,
+			);
+			name = GroupEvents;
+			sourceTree = "<group>";
+		};
+		A5FC94D31E1C4026004E1F02 /* Gear */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E471E1068A4003196D5 /* Bike.swift */,
+				A5432E4D1E1068A4003196D5 /* Gear.swift */,
+				A5432E4E1E1068A4003196D5 /* GearSummary.swift */,
+			);
+			name = Gear;
+			sourceTree = "<group>";
+		};
+		A5FC94D41E1C41C0004E1F02 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E4B1E1068A4003196D5 /* Comment.swift */,
+			);
+			name = Comments;
+			sourceTree = "<group>";
+		};
+		A5FC94D61E1C41D2004E1F02 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E631E1068A4003196D5 /* StravaPhoto.swift */,
+				A5432E501E1068A4003196D5 /* InstagramPhoto.swift */,
+				A5432E551E1068A4003196D5 /* Photo.swift */,
+				A5432E561E1068A4003196D5 /* PhotoSummary.swift */,
+				A5432E571E1068A4003196D5 /* PrimaryPhoto.swift */,
+			);
+			name = Photos;
+			sourceTree = "<group>";
+		};
+		A5FC94D71E1D678D004E1F02 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E581E1068A4003196D5 /* Route.swift */,
+				A5432E591E1068A4003196D5 /* RouteSummary.swift */,
+				A5FC94D01E1C3D01004E1F02 /* RouteMeta.swift */,
+				A5FC94D81E1D68DE004E1F02 /* MapSummary.swift */,
+			);
+			name = Routes;
+			sourceTree = "<group>";
+		};
+		A5FC94DA1E1D6A1B004E1F02 /* Uploads */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E401E1068A4003196D5 /* ActivityUploadStatus.swift */,
+				A5432E411E1068A4003196D5 /* ActivityUploadType.swift */,
+			);
+			name = Uploads;
+			sourceTree = "<group>";
+		};
+		A5FC94DB1E1D6B3C004E1F02 /* RunningRaces */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E5A1E1068A4003196D5 /* RunningRace.swift */,
+				A5432E5B1E1068A4003196D5 /* RunningRaceSummary.swift */,
+			);
+			name = RunningRaces;
+			sourceTree = "<group>";
+		};
+		A5FC94DC1E1D6BD3004E1F02 /* Streams */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E641E1068A4003196D5 /* Stream.swift */,
+			);
+			name = Streams;
+			sourceTree = "<group>";
+		};
+		A5FC94DD1E1ECC14004E1F02 /* Segments */ = {
+			isa = PBXGroup;
+			children = (
+				A5FC94DE1E1ECE0E004E1F02 /* Leaderboards */,
+				A5432E5C1E1068A4003196D5 /* Segment.swift */,
+				A5432E5F1E1068A4003196D5 /* SegmentSummary.swift */,
+			);
+			name = Segments;
+			sourceTree = "<group>";
+		};
+		A5FC94DE1E1ECE0E004E1F02 /* Leaderboards */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E521E1068A4003196D5 /* Leaderboard.swift */,
+				A5432E531E1068A4003196D5 /* LeaderboardEntry.swift */,
+			);
+			name = Leaderboards;
+			sourceTree = "<group>";
+		};
+		A5FC94DF1E1ECE52004E1F02 /* SegmentEfforts */ = {
+			isa = PBXGroup;
+			children = (
+				A5432E5D1E1068A4003196D5 /* SegmentEffort.swift */,
+				A5432E5E1E1068A4003196D5 /* SegmentEffortSummary.swift */,
+			);
+			name = SegmentEfforts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -410,12 +539,14 @@
 				A5432EAE1E106F92003196D5 /* LeaderboardEntry.swift in Sources */,
 				A5432EA21E106F92003196D5 /* Bike.swift in Sources */,
 				A5432EA41E106F92003196D5 /* ClubMembership.swift in Sources */,
+				A5FC94D91E1D68DE004E1F02 /* MapSummary.swift in Sources */,
 				A5432EB21E106F92003196D5 /* Route.swift in Sources */,
 				A5432EAF1E106F92003196D5 /* Photo.swift in Sources */,
+				A5FC94CE1E1ADB0C004E1F02 /* SplitSummary.swift in Sources */,
 				A5432EB51E106F92003196D5 /* RunningRaceSummary.swift in Sources */,
 				A5432EA11E106F92003196D5 /* Auth.swift in Sources */,
 				A5432EA01E106F92003196D5 /* AthleteSummary.swift in Sources */,
-				A5432EAA1E106F92003196D5 /* GroupEvent.swift in Sources */,
+				A5432EAA1E106F92003196D5 /* GroupEventSummary.swift in Sources */,
 				A5432EB41E106F92003196D5 /* RunningRace.swift in Sources */,
 				A5432E991E106F92003196D5 /* Activity.swift in Sources */,
 				A5432E961E106F92003196D5 /* Network.swift in Sources */,
@@ -438,6 +569,7 @@
 				A5432EAB1E106F92003196D5 /* InstagramPhoto.swift in Sources */,
 				A5432EB11E106F92003196D5 /* PrimaryPhoto.swift in Sources */,
 				A5432E9D1E106F92003196D5 /* ActivityZone.swift in Sources */,
+				A5FC94D11E1C3D01004E1F02 /* RouteMeta.swift in Sources */,
 				A5432EB81E106F92003196D5 /* SegmentEffortSummary.swift in Sources */,
 				A5432EBB1E106F92003196D5 /* StravaPhoto.swift in Sources */,
 				A5432E9A1E106F92003196D5 /* ActivitySummary.swift in Sources */,
