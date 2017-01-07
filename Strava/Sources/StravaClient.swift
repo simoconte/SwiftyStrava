@@ -697,10 +697,18 @@ public extension StravaClient {
     }
 }
 
-/* 
- Routes
- */
+
+// MARK: - Routes
 public extension StravaClient {
+    
+    /// Retrieve a route
+    ///
+    /// This request is used to retrieve details about a route. Private routes can only be accessed if owned by the authenticating user and the
+    /// token has view_private permissions. For raw data associated with a route see route streams.
+    ///
+    /// - Parameters:
+    ///   - routeId: Needed `Route` id
+    ///   - completion: The closure called when request is complete
     func retrieveARoute(routeId: Int64, completion: @escaping (StravaResponse<Route>) -> Void) {
         var req = StravaRequest<Route>()
         req.pathComponent = "/routes/\(routeId)"
@@ -710,6 +718,15 @@ public extension StravaClient {
         req.requestObject(completion)
     }
     
+    
+    /// List routes
+    ///
+    /// Lists a specific athlete’s routes. Private routes will only be included if the authenticating user is viewing their own routes and the
+    /// token has view_private permissions
+    ///
+    /// - Parameters:
+    ///   - athleteId: Needed `Route` id
+    ///   - completion: The closure called when request is complete
     func listRoutes(athleteId: Int64, completion: @escaping (StravaResponse<[RouteSummary]>) -> Void) {
         var req = StravaRequest<RouteSummary>()
         req.pathComponent = "/athletes/\(athleteId)/routes"
