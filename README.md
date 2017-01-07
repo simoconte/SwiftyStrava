@@ -14,7 +14,6 @@ This project is *not official* Strava library written in Swift. It supports read
 - [Usage](#usage)
 - [FAQ](#faq)
 - [Credits](#credits)
-- [Donations](#donations)
 - [License](#license)
 
 ## Features
@@ -83,8 +82,6 @@ Run `carthage update` to build the framework and drag the built `Strava.framewor
 ## FAQ
 
 ## Credits
-
-## Donations
 
 ## License
 
