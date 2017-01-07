@@ -202,7 +202,7 @@ public extension StravaClient {
     ///   - perPage: num records per page
     ///   - completion: the closure called when request is complete
     /// 
-    /// [Read about pagination...](http://strava.github.io/api/#pagination)
+    /// [Read more about pagination...](http://strava.github.io/api/#pagination)
     func listAthletesFriends(athleteId: Int? = nil,
                              page: Int = 0,
                              perPage: Int = 0,
@@ -234,7 +234,7 @@ public extension StravaClient {
     ///   - per_page: integer optional
     ///   - completion: the closure called when request is complete
     ///
-    /// [Read about pagination...](http://strava.github.io/api/#pagination)
+    /// [Read more about pagination...](http://strava.github.io/api/#pagination)
     func listAthletesFollowers(athleteId: Int? = nil,
                                page: Int = 0,
                                perPage: Int = 0,
@@ -263,7 +263,7 @@ public extension StravaClient {
     ///   - per_page: integer optional
     ///   - completion: the closure called when request is complete
     ///
-    /// [Read about pagination...](http://strava.github.io/api/#pagination)   
+    /// [Read more about pagination...](http://strava.github.io/api/#pagination)
     func listAthletesBothFollowing(athleteId: Int,
                                    page: Int = 0,
                                    perPage: Int = 0,
@@ -327,7 +327,7 @@ public extension StravaClient {
     ///   - per_page: integer optional
     ///   - completion: the closure called when request is complete
     ///
-    /// [Read about pagination...](http://strava.github.io/api/#pagination)
+    /// [Read more about pagination...](http://strava.github.io/api/#pagination)
     func listAthletesKOMs(athleteId: Int,
                           page: Int = 0,
                           perPage: Int = 0,
@@ -747,10 +747,15 @@ public extension StravaClient {
     }
 }
 
-/*
- Segments
- */
+
+// MARK: - Segments
 public extension StravaClient {
+    
+    /// Retrieve details about a specific segment
+    ///
+    /// - Parameters:
+    ///   - segmentId: Indicates needed `Segment`
+    ///   - completion: The closure called when request is complete
     func retrieveASegment(segmentId: Int64, completion: @escaping (StravaResponse<Segment>) -> Void) {
         var req = StravaRequest<Segment>()
         req.pathComponent = "/segments/\(segmentId)"
@@ -760,6 +765,17 @@ public extension StravaClient {
         req.requestObject(completion)
     }
     
+    
+    /// List starred segment
+    ///
+    /// Returns a summary representation of the segments starred by the authenticated user. Pagination is supported.
+    ///
+    /// - Parameters:
+    ///   - page: start page
+    ///   - perPage: num records per page
+    ///   - completion: the closure called when request is complete
+    ///
+    /// [Read about pagination...](http://strava.github.io/api/#pagination)
     func listStarredSegments(page: Int = 0, perPage: Int = 0, completion: @escaping (StravaResponse<[SegmentSummary]>) -> Void) {
         var req = StravaRequest<SegmentSummary>()
         req.pathComponent = "/segments/starred"
@@ -775,6 +791,13 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    
+    /// Star a segment
+    ///
+    /// - Parameters:
+    ///   - segmentId: Indicates needed `Segment`
+    ///   - starred: set to `true` to star, `false` to unstar
+    ///   - completion: The closure called when request is complete
     func starASegment(segmentId: Int64, starred: Bool, completion: @escaping (StravaResponse<Segment>) -> Void) {
         var req = StravaRequest<Segment>()
         req.pathComponent = "/segments/\(segmentId)/starred"
@@ -785,6 +808,20 @@ public extension StravaClient {
         req.requestObject(completion)
     }
     
+    /// List efforts
+    ///
+    /// Retrieve an array of segment efforts, for a given segment, filtered by athlete and/or a date range. Pagination is supported.
+    ///
+    /// - Parameters:
+    ///   - segmentId: Indicates needed `Segment`
+    ///   - athleteId: Indicates needed `Athlete`
+    ///   - startDateLocal: Start of the required time interval (local time)
+    ///   - endDateLocal: End of the required time interval (local time)
+    ///   - page: start page
+    ///   - perPage: num records per page
+    ///   - completion: the closure called when request is complete
+    ///
+    /// [Read about pagination...](http://strava.github.io/api/#pagination)
     func listEfforts(segmentId: Int64,
                      athleteId: Int64,
                      startDateLocal: Date?,
@@ -809,6 +846,26 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    
+    /// Segment leaderboards
+    ///
+    /// Leaderboards represent the ranking of athletes on specific segments. Filter by `ageGroup` and `weightClass` is only allowed if the
+    /// authenticated athlete is a Strava premium member. Pagination is supported
+    ///
+    /// - Parameters:
+    ///   - segmentId: Indicates needed `Segment`
+    ///   - gender: Athletes gender
+    ///   - ageGroup: Athletes age group (listed in `AgeGroup` enum)
+    ///   - weightClass: Athletes weight class (listed in `WeightClass` enum)
+    ///   - isFollowing: Set to `true` if you want to see only the atletes followed by current athlete
+    ///   - clubId: If set, will show only the athletes from specific club
+    ///   - dateRange: Listed in `DateRange` enum
+    ///   - contextEntries: Default is 2, max of 15
+    ///   - page: start page
+    ///   - perPage: num records per page
+    ///   - completion: The closure called when request is complete
+    ///
+    /// [Read about pagination...](http://strava.github.io/api/#pagination)
     func segmentLeaderboards(segmentId: Int64,
                      gender: Gender,
                      ageGroup: AgeGroup?,
@@ -842,6 +899,17 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    
+    /// Segment explorer
+    /// 
+    /// This endpoint can be used to find popular segments within a given area.
+    ///
+    /// - Parameters:
+    ///   - bounds: comma separated list of bounding box corners
+    ///   - activityType: `ActivityType.running` or `ActivityType.riding`, default is `ActivityType.riding`
+    ///   - minClimbCategory: Minimum climb category filter
+    ///   - maxClimbCategory: Maximum climb category filter
+    ///   - completion: The closure called when request is complete
     func segmentExplorer(bounds: Bounds,
                          activityType: ActivityType? = .ride,
                          minClimbCategory: ClimbCategory? = nil,
