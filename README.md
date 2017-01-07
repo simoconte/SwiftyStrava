@@ -38,10 +38,9 @@ This project is *not official* Strava library written in Swift. It supports read
 
 SwiftyStrava has three external dependencies:
 
-- (Alamofire)[https://github.com/Alamofire/Alamofire]
-- (AlamofireObjectMapper)[https://github.com/tristanhimmelman/AlamofireObjectMapper]
-- (ObjectMapper)[https://github.com/Hearst-DD/ObjectMapper]
-
+- [Alamofire](https://github.com/Alamofire/Alamofire)
+- [AlamofireObjectMapper](https://github.com/tristanhimmelman/AlamofireObjectMapper)
+- [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
 
 ## Requirements
 
