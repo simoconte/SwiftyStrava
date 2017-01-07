@@ -955,11 +955,34 @@ public extension StravaClient {
 /*
  Uploads
  */
+
 public extension StravaClient {
-    //Upload an activity
-    //Check upload status 
+    /// Upload an activity
+    ///
+    /// Uploading to Strava is an asynchronous process. A file is uploaded using a multipart/form-data POST request which performs initial checks
+    /// on the data and enqueues the file for processing. The activity will not appear in other API requests until it has finished processing
+    /// successfully.
     
-    func uploadAnActivity(activityType: Int64,
+    /// Processing status may be checked by polling Strava. A one-second or longer polling interval is recommended. 
+    /// The mean processing time is currently around 8 seconds. Once processing is complete, Strava will respond to polling requests with the activity’s ID.
+    
+    ///Errors can occur during the submission or processing steps and may be due to malformed activity data or duplicate data submission.
+    ///
+    /// Currently Strava supports three file types: FIT, GPS and TCX
+    /// More on Activity uploading process at [Strava Activity Upload](https://strava.github.io/api/v3/uploads/)
+    ///
+    /// - Parameters:
+    ///   - activityType:  Indicates the type of uploaded activity. Listed in `ActivityType` enum. Type detected from file overrides, uses athlete’s default type if not specified
+    ///   - name: activity name. If not provided, will be populated using start date and location, if available
+    ///   - description: Optional activity description
+    ///   - isPrivate: Set to `true` to mark the resulting activity as private, ‘view_private’ permissions will be necessary to view the activity
+    ///   - isTrainer: Activities without lat/lng info in the file are auto marked as stationary, set to `true` to force
+    ///   - isCommute: Set to `true` to mark as commute
+    ///   - dataType: Possible values listed in `ActivityUploadType`
+    ///   - externalId: Data filename will be used by default but should be a unique identifier
+    ///   - file: The actual activity data, if gzipped the data_type must end with .gz (select `...Zipped` `Activity upload type`)
+    ///   - completion: The closure called when request is complete
+    func uploadAnActivity(activityType: ActivityType?,
                           name: String? = nil,
                           description: String? = nil,
                           isPrivate: Bool = false,
@@ -986,6 +1009,16 @@ public extension StravaClient {
         })
     }
     
+    
+    /// Check upload status
+    ///
+    /// Upon upload, Strava will respond with an upload ID. You may use this ID to poll the status of your upload.
+    /// Strava recommends polling no more than once a second. Polling more frequently is unnecessary. 
+    /// The mean processing time is around 8 seconds.
+    ///
+    /// - Parameters:
+    ///   - id: Activity id (obtained during activity upload)
+    ///   - completion: The closure called when request is complete
     func checkUploadStatus(id: Int64, completion: @escaping (StravaResponse<ActivityUploadStatus>) -> Void) {
         var req = StravaRequest<ActivityUploadStatus>()
         req.pathComponent = "/uploads/\(id)"
