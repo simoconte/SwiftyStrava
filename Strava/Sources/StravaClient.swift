@@ -862,10 +862,16 @@ public extension StravaClient {
     }
 }
 
-/*
- Segment Efforts
- */
+// MARK: - Segment Efforts
 public extension StravaClient {
+    
+    /// Retrieve a segment effort
+    ///
+    /// Retrieve details about a specific segment effort. The effort must be public or it must correspond to the current athlete.
+    ///
+    /// - Parameters:
+    ///   - effortId: Indicates needed `SegmentEffort`
+    ///   - completion: The closure called when request is complete
     func retrieveASegmentEffort(effortId: Int64, completion: @escaping (StravaResponse<SegmentEffort>) -> Void) {
         var req = StravaRequest<SegmentEffort>()
         req.pathComponent = "/segment_efforts/\(effortId)"
