@@ -721,10 +721,15 @@ public extension StravaClient {
     }
 }
 
-/*
- Running Races
- */
+
+// MARK: - Running Races
 public extension StravaClient {
+    
+    /// List races
+    ///
+    /// - Parameters:
+    ///   - year: Defaults to the current year
+    ///   - completion: The closure called when request is complete
     func listRoutes(year: Int? = nil, completion: @escaping (StravaResponse<[RunningRaceSummary]>) -> Void) {
         var req = StravaRequest<RunningRaceSummary>()
         req.pathComponent = "/running_races"
@@ -737,6 +742,12 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    
+    /// Retrieve race details
+    ///
+    /// - Parameters:
+    ///   - raceId: This request is used to retrieve details about a running race.
+    ///   - completion: The closure called when request is complete
     func retrieveRaceDetails(raceId: Int64, completion: @escaping (StravaResponse<RunningRace>) -> Void) {
         var req = StravaRequest<RunningRace>()
         req.pathComponent = "/running_races/\(raceId)"
