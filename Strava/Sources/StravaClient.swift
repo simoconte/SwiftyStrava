@@ -216,7 +216,7 @@ public extension StravaClient {
         
         if page > 0 && perPage > 0 {
             req.addParam("page", value: page)
-            req.addParam("per_page", value: perPage)
+            req.addParam("perPage", value: perPage)
         }
         
         req.addToken(token: StravaClient.instance.authToken!)
@@ -231,7 +231,7 @@ public extension StravaClient {
     /// - Parameters:
     ///   - id: integer required depending on request type
     ///   - page: integer optional
-    ///   - per_page: integer optional
+    ///   - perPage: integer optional
     ///   - completion: the closure called when request is complete
     ///
     /// [Read about pagination...](http://strava.github.io/api/#pagination)
@@ -247,7 +247,7 @@ public extension StravaClient {
         }
         if page > 0 && perPage > 0 {
             req.addParam("page", value: page)
-            req.addParam("per_page", value: perPage)
+            req.addParam("perPage", value: perPage)
         }
         
         req.addToken(token: StravaClient.instance.authToken!)
@@ -260,7 +260,7 @@ public extension StravaClient {
     /// - Parameters:
     ///   - id: integer required
     ///   - page: integer optional
-    ///   - per_page: integer optional
+    ///   - perPage: integer optional
     ///   - completion: the closure called when request is complete
     ///
     /// [Read about pagination...](http://strava.github.io/api/#pagination)   
@@ -272,7 +272,7 @@ public extension StravaClient {
         req.pathComponent = "/athletes/\(athleteId)/both-following"
         if page > 0 && perPage > 0 {
             req.addParam("page", value: page)
-            req.addParam("per_page", value: perPage)
+            req.addParam("perPage", value: perPage)
         }
         
         req.addToken(token: StravaClient.instance.authToken!)
@@ -324,7 +324,7 @@ public extension StravaClient {
     /// - Parameters:
     ///   - id: integer required
     ///   - page: integer optional
-    ///   - per_page: integer optional
+    ///   - perPage: integer optional
     ///   - completion: the closure called when request is complete
     ///
     /// [Read about pagination...](http://strava.github.io/api/#pagination)
@@ -336,7 +336,7 @@ public extension StravaClient {
         req.pathComponent = "/athletes/\(athleteId)/koms"
         if page > 0 && perPage > 0 {
             req.addParam("page", value: page)
-            req.addParam("per_page", value: perPage)
+            req.addParam("perPage", value: perPage)
         }
         
         req.addToken(token: StravaClient.instance.authToken!)
@@ -350,7 +350,7 @@ public extension StravaClient {
     ///   - city: string
     ///   - state: string
     ///   - country: string
-    ///   - sex: string ‘M’ or ‘F’, any other value will set to null and displayed as “rather not say”
+    ///   - sex: string ‘M’ or ‘F’, any other value will set to null and displayed as "rather not say"
     ///   - weight: float kilograms
     ///   - completion: the closure called when request is complete
     func updateAthlete(city: String? = nil,
@@ -379,7 +379,17 @@ public extension StravaClient {
  */
 public extension StravaClient {
     
-    // Comments
+    /// The number of comments is included in the activity summary and detail responses. 
+    /// Use this endpoint to retrieve a list of comments left on a given activity.
+    /// Pagination is supported
+    /// 
+    /// - Parameters:
+    ///   - id: integer required
+    ///   - page: integer optional
+    ///   - perPage: integer optional
+    ///   - completion: the closure called when request is complete
+    /// 
+    /// [Read about pagination...](http://strava.github.io/api/#pagination)
     func listActivityComments(activityId: String,
                               page: Int = 0,
                               perPage: Int = 0,
@@ -389,7 +399,7 @@ public extension StravaClient {
         
         if page > 0 && perPage > 0 {
             req.addParam("page", value: page)
-            req.addParam("per_page", value: perPage)
+            req.addParam("perPage", value: perPage)
         }
         req.method = .get
         req.addToken(token: StravaClient.instance.authToken!)
@@ -397,7 +407,17 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
-    // Kudoers
+    /// The number of kudos is included in the activity summary and detailed representations.
+    /// This endpoint is for retrieving more detailed information on the athletes who’ve left
+    /// kudos and can only be accessed by the owner of the activity. Pagination is supported.
+    /// 
+    /// - Parameters:
+    ///   - id: integer required
+    ///   - page: integer optional
+    ///   - perPage: integer optional
+    ///   - completion: the closure called when request is complete
+    /// 
+    /// [Read about pagination...](http://strava.github.io/api/#pagination)
     func listActivityKudoers(activityId: String,
                               page: Int = 0,
                               perPage: Int = 0,
@@ -407,7 +427,7 @@ public extension StravaClient {
         
         if page > 0 && perPage > 0 {
             req.addParam("page", value: page)
-            req.addParam("per_page", value: perPage)
+            req.addParam("perPage", value: perPage)
         }
         req.method = .get
         req.addToken(token: StravaClient.instance.authToken!)
@@ -415,16 +435,52 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
-    // Kudoers
+    /// The number of photos is included in the activity summary and detail responses.
+    /// Use this endpoint to retrieve a list of photos associated with this activity.
+    /// This endpoint can only be accessed by the owner of the activity.
+    /// 
+    /// - Parameters:
+    ///   - id: integer required
+    ///   - photoSources: boolean required always use true
+    ///   - size: integer optional
+    ///           the requested size of the activity’s photos.
+    ///           URLs for the photos will be returned that best match the requested size.
+    ///           If not included, the smallest size is returned.
+    ///   - completion: the closure called when request is complete
     func listActivityPhotos(activityId: String, completion: @escaping (StravaResponse<[Photo]>) -> Void) {
         var req = StravaRequest<Photo>()
-        req.pathComponent = "/activities/\(activityId)/photos?photo_sources=true"
+        req.pathComponent = "/activities/\(activityId)/photos?photoSources=true"
         req.method = .get
         req.addToken(token: StravaClient.instance.authToken!)
         
         req.requestArray(completion)
     }
     
+    /// This API endpoint is for creating manually entered activities.
+    /// To upload a FIT, TCX or GPX file see the
+    /// [Upload Documentation](http://strava.github.io/api/v3/uploads/)
+    ///
+    /// Requires write permissions, as requested during the authorization process.
+    ///
+    /// - Parameters:
+    ///   - name: string required
+    ///   - type: string required, case insensitive
+    ///     ‘Ride’, ‘Run’, ‘Swim’, etc. See above for all possible types.
+    ///   - startDateLocal: datetime required
+    ///     ISO 8601 formatted date time, see Dates for more information
+    ///   - elapsedTime: integer required
+    ///     seconds
+    ///   - description: string optional
+    ///   - distance: float optional
+    ///     meters
+    ///   - private: integer optional
+    ///     set to 1 to mark the resulting activity as private,
+    ///     ‘view_private’ permissions will be necessary to view the activity
+    ///   - trainer: integer optional
+    ///     set to 1 to mark as a trainer activity
+    ///   - commute: integer optional
+    ///     set to 1 to mark as commute
+    ///   - completion: the closure called when request is complete
     func createAnActivity(name: String,
                           activityType: ActivityType,
                           startDate: Date,
@@ -442,8 +498,8 @@ public extension StravaClient {
         
         req.addParam("name", value: name)
         req.addParam("type", value: activityType.rawValue)
-        req.addParam("start_date_local", value: startDate.toISO8601String())
-        req.addParam("elapsed_time", value: elapsedTime)
+        req.addParam("startDateLocal", value: startDate.toISO8601String())
+        req.addParam("elapsedTime", value: elapsedTime)
         req.addParam("description", value: description)
         req.addParam("distance", value: distance)
         req.addParam("private", value: isPrivate)
@@ -455,16 +511,74 @@ public extension StravaClient {
         req.requestObject(completion)
     }
     
+    /// Returns a detailed representation if the activity is owned by the requesting athlete.
+    /// Returns a summary representation for all other requests.
+    /// Activity details, including segment efforts, splits and best efforts,
+    /// are only available to the owner of the activity. By default, only "important" efforts are included.
+    /// "Importance" is based on a number of factors and its value may change over time.
+    /// Factors considered include: segment age, views and stars,
+    /// if the user has hidden/shown the segment and if the effort was a PR.
+    /// Note, if two activities cover the same segment, it is possible that for one activity
+    /// the associated effort is "important" but not for the other.
+    ///
+    /// Note that effort ids may exceed the max value for 32-bit integers. A 'long integer' type should be used.
+    ///
+    /// - Parameters:
+    ///   - id: integer required
+    ///   - includeAllEfforts: boolean optional
+    ///     used to include all segment efforts in the result
+    ///     Each segment effort will have a hidden attribute indicating if it is "important" or not.
+    ///   - completion: the closure called when request is complete
+    ///
+    /// - Achievements:
+    ///   Each segment effort and best effort will have an achievements attribute
+    ///   containing an array of achievements for the effort.
+    ///   This array is empty if there are no achievements.
+    ///   Each achievement object contains a type id, a type, and a rank.
+    ///
+    ///   - type_id: integer
+    ///     achievement type
+    ///   - type: string
+    ///     string identifier for achievement type
+    ///   - rank: integer
+    ///     rank for achievement type
+    ///     
+    ///     Achievement Types
+    ///     type_id    type           description
+    ///     2          ‘overall’       Overall Leaderboard Rank
+    ///     3          ‘pr’            Athlete PR Rank
+    ///     5          ‘year_overall’  Annual Leaderboard Rank
+    ///
+    /// Achievements are computed at time of upload and reflect ranks at that point in time.
+    /// They are not dynamically updated at any point thereafter and should not be used to infer leaderboard state.
+    /// For example, a segment effort achievement with a type_id of 3 and rank of 2
+    /// would indicate that the effort was the athlete’s second best all-time performance on the segment
+    /// at the time the activity was uploaded.
     func retrieveAnActivity(activityId: Int64, includeAllEfforts: Bool = false, completion: @escaping (StravaResponse<Activity>) -> Void) {
         var req = StravaRequest<Activity>()
         req.pathComponent = "/activities/\(activityId)"
         req.method = .get
-        req.addParam("include_all_efforts", value: includeAllEfforts)
+        req.addParam("includeAllEfforts", value: includeAllEfforts)
         req.addToken(token: StravaClient.instance.authToken!)
         
         req.requestObject(completion)
     }
     
+    /// Requires write permissions, as requested during the authorization process.
+    ///
+    /// - Parameters:
+    ///   - name: string optional
+    ///   - type: string optional
+    ///   - private: boolean optional
+    ///     defaults to false
+    ///   - commute: boolean optional
+    ///     defaults to false
+    ///   - trainer: boolean optional
+    ///     defaults to false
+    ///   - gearId: string optional
+    ///     ‘none’ clears gear from activity
+    ///   - description: string optional
+    ///   - completion: the closure called when request is complete
     func updateAnActivity(activityId: Int64,
                           name: String,
                           activityType: ActivityType?,
@@ -482,7 +596,7 @@ public extension StravaClient {
         req.addParam("name", value: name)
         req.addParam("type", value: activityType?.rawValue)
         req.addParam("description", value: description)
-        req.addParam("gear_id", value: gearId)
+        req.addParam("gearId", value: gearId)
         req.addParam("private", value: isPrivate)
         req.addParam("trainer", value: isTrainer)
         req.addParam("commute", value: isCommute ? 1 : 0)
@@ -490,6 +604,11 @@ public extension StravaClient {
         req.requestObject(completion)
     }
     
+    /// Requires write permissions, as requested during the authorization process.
+    ///
+    /// - Parameters:
+    ///   - id: integer required
+    ///   - completion: the closure called when request is complete
     func deleteAnActivity(activityId: Int64, completion: @escaping (Bool, StravaError?) -> Void) {
         var req = StravaRequest<StravaObject>()
         req.pathComponent = "/activities/\(activityId)"
@@ -500,6 +619,19 @@ public extension StravaClient {
         req.requestWithSuccessConfirmation(completion)
     }
     
+    /// This endpoint returns a list of activities for the authenticated user.
+    ///
+    /// - Parameters:
+    ///   - before: integer optional
+    ///     seconds since UNIX epoch, result will start with activities whose start_date is before this value
+    ///   - after: integer optional
+    ///     seconds since UNIX epoch, result will start with activities whose start_date is after this value,
+    ///     sorted oldest first
+    ///   - page: integer optional
+    ///   - perPage: integer optional
+    ///     before, after or page can not be used in combination.
+    ///     They are independent ways of indicating where in the list of activities to begin the results.
+    ///   - completion: the closure called when request is complete
     func listAthletesActivities(afterDate: Date?,
                                 beforeDate: Date?,
                                 page: Int = 0,
@@ -513,7 +645,7 @@ public extension StravaClient {
         req.addParam("after", value: afterDate?.timeIntervalSince1970)
         if page > 0 && perPage > 0 {
             req.addParam("page", value: page)
-            req.addParam("per_page", value: perPage)
+            req.addParam("perPage", value: perPage)
         }
         
         req.addToken(token: StravaClient.instance.authToken!)
@@ -521,6 +653,16 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    /// Returns the activities that were matched as “with this group”. The number equals activity.athlete_count-1.
+    /// Pagination is supported.
+    ///
+    /// - Parameters:
+    ///   - id: integer required
+    ///   - page: integer optional
+    ///   - perPage: integer optional
+    ///   - completion: the closure called when request is complete
+    ///
+    /// [Read about pagination...](http://strava.github.io/api/#pagination)
     func listRelatedActivities(activityId: Int64,
                                page: Int = 0,
                                perPage: Int = 0,
@@ -530,7 +672,7 @@ public extension StravaClient {
         req.method = .get
         if page > 0 && perPage > 0 {
             req.addParam("page", value: page)
-            req.addParam("per_page", value: perPage)
+            req.addParam("perPage", value: perPage)
         }
         
         req.addToken(token: StravaClient.instance.authToken!)
@@ -538,6 +680,19 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    /// List the recent activities performed by the current athlete and those they are following.
+    /// Pagination is supported. However, results are limited to the last 200 total activities.
+    ///
+    /// - Parameters:
+    ///   - before: integer optional
+    ///     seconds since UNIX epoch, result will start with activities whose start_date is before this value
+    ///   - page: integer optional
+    ///   - perPage: integer optional
+    ///     before and page can not be used in combination.
+    ///     They are independent ways of indicating where in the list of activities to begin the results.
+    ///   - completion: the closure called when request is complete
+    ///
+    /// [Read about pagination...](http://strava.github.io/api/#pagination)
     func listFriendsActivities(beforeDate: Date?,
                                 page: Int = 0,
                                 perPage: Int = 0,
@@ -549,7 +704,7 @@ public extension StravaClient {
         req.addParam("before", value: beforeDate?.timeIntervalSince1970)
         if page > 0 && perPage > 0 {
             req.addParam("page", value: page)
-            req.addParam("per_page", value: perPage)
+            req.addParam("perPage", value: perPage)
         }
         
         req.addToken(token: StravaClient.instance.authToken!)
@@ -557,6 +712,13 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    /// Heartrate and power zones are set by the athlete. This endpoint returns the time (seconds) in each zone.
+    /// The distribution is not customizable. Requires an access token associated with the owner of the activity
+    /// and the owner must be a premium user.
+    ///
+    /// - Parameters:
+    ///   - id: integer required
+    ///   - completion: the closure called when request is complete
     func listActivityZones(activityId: Int64,
                            completion: @escaping (StravaResponse<[ActivityZone]>) -> Void) {
         var req = StravaRequest<ActivityZone>()
@@ -568,6 +730,13 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    /// This resource will return all laps for an activity.
+    /// Laps are triggered by athletes using their respective devices, such as Garmin watches.
+    /// Note that pace zones are only populated for runs, and are based on the athlete’s user-submitted race times.
+    ///
+    /// - Parameters:
+    ///   - id: integer required
+    ///   - completion: the closure called when request is complete
     func listActivityLaps(activityId: Int64,
                            completion: @escaping (StravaResponse<[Lap]>) -> Void) {
         var req = StravaRequest<Lap>()
@@ -626,7 +795,7 @@ public extension StravaClient {
         req.method = .get
         if page > 0 && perPage > 0 {
             req.addParam("page", value: page)
-            req.addParam("per_page", value: perPage)
+            req.addParam("perPage", value: perPage)
         }
         req.addToken(token: StravaClient.instance.authToken!)
         
@@ -639,7 +808,7 @@ public extension StravaClient {
         req.method = .get
         if page > 0 && perPage > 0 {
             req.addParam("page", value: page)
-            req.addParam("per_page", value: perPage)
+            req.addParam("perPage", value: perPage)
         }
         req.addToken(token: StravaClient.instance.authToken!)
         
@@ -655,7 +824,7 @@ public extension StravaClient {
         }
         if page > 0 && perPage > 0 {
             req.addParam("page", value: page)
-            req.addParam("per_page", value: perPage)
+            req.addParam("perPage", value: perPage)
         }
         req.addToken(token: StravaClient.instance.authToken!)
         
@@ -767,7 +936,7 @@ public extension StravaClient {
         
         if page > 0 && perPage > 0 {
             req.addParam("page", value: page)
-            req.addParam("per_page", value: perPage)
+            req.addParam("perPage", value: perPage)
         }
         
         req.addToken(token: StravaClient.instance.authToken!)
@@ -801,7 +970,7 @@ public extension StravaClient {
         req.addParam("end_date_local", value: endDateLocal?.toISO8601String())
         if page > 0 && perPage > 0 {
             req.addParam("page", value: page)
-            req.addParam("per_page", value: perPage)
+            req.addParam("perPage", value: perPage)
         }
         
         req.addToken(token: StravaClient.instance.authToken!)
@@ -834,7 +1003,7 @@ public extension StravaClient {
         req.addParam("context_entries", value: contextEntries)
         if page > 0 && perPage > 0 {
             req.addParam("page", value: page)
-            req.addParam("per_page", value: perPage)
+            req.addParam("perPage", value: perPage)
         }
         
         req.addToken(token: StravaClient.instance.authToken!)
