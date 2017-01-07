@@ -580,10 +580,17 @@ public extension StravaClient {
     }
 }
 
-/*
- Clubs
- */
+
+// MARK: - Clubs
 public extension StravaClient {
+    
+    /// Retrieve a club
+    ///
+    /// Retrieve details about a specific club
+    ///
+    /// - Parameters:
+    ///   - clubId: Indicates needed `Club`
+    ///   - completion: The closure called when request is complete
     func retrieveAClub(clubId: String, completion: @escaping (StravaResponse<Club>) -> Void) {
         var req = StravaRequest<Club>()
         req.pathComponent = "/clubs/\(clubId)"
@@ -593,6 +600,15 @@ public extension StravaClient {
         req.requestObject(completion)
     }
     
+    
+    /// List club announcements
+    ///
+    /// Announcements are posts sent by Club Admins or Owners to the members of a club. 
+    /// Only members of private clubs can access their announcements. The objects are returned in summary representation
+    ///
+    /// - Parameters:
+    ///   - clubId: Indicates needed `Club`
+    ///   - completion: The closure called when request is complete
     func listClubAnnouncements(clubId: String, completion: @escaping (StravaResponse<[Announcement]>) -> Void) {
         var req = StravaRequest<Announcement>()
         req.pathComponent = "/clubs/\(clubId)/announcements"
@@ -602,6 +618,14 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    
+    /// List club group events
+    ///
+    /// Returns an array of club group event summary representations ordered by occurrence time
+    ///
+    /// - Parameters:
+    ///   - clubId: Indicates needed `Club`
+    ///   - completion: The closure called when request is complete
     func listClubGroupEvents(clubId: String, completion: @escaping (StravaResponse<[GroupEventSummary]>) -> Void) {
         var req = StravaRequest<GroupEventSummary>()
         req.pathComponent = "/clubs/\(clubId)/group_events"
@@ -611,6 +635,10 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    
+    /// List athlete clubs
+    ///
+    /// - Parameter completion: The closure called when request is complete
     func listAthleteClubs(completion: @escaping (StravaResponse<[ClubSummary]>) -> Void) {
         var req = StravaRequest<ClubSummary>()
         req.pathComponent = "/athlete/clubs"
@@ -620,6 +648,20 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    
+    /// List club members
+    ///
+    /// Retrieve summary information about members of a specific club. Pagination is supported. 
+    /// Enhanced Privacy Mode is respected, only members of the club can access the full list including members with 
+    /// Enhanced Privacy whom they don’t follow
+    ///
+    /// - Parameters:
+    ///   - clubId: Indicates needed `Club`
+    ///   - page: start page
+    ///   - perPage: num records per page
+    ///   - completion: The closure called when request is complete
+    ///
+    /// [Read about pagination...](http://strava.github.io/api/#pagination)
     func listClubMembers(clubId: String, page: Int = 0, perPage: Int = 0, completion: @escaping (StravaResponse<[AthleteSummary]>) -> Void) {
         var req = StravaRequest<AthleteSummary>()
         req.pathComponent = "/clubs/\(clubId)/members"
@@ -633,6 +675,17 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    /// List club admins
+    ///
+    /// Retrieve summary information about admins of a specific club, with the owner on top and sorted by first names. Pagination is supported
+    ///
+    /// - Parameters:
+    ///   - clubId: Indicates needed `Club`
+    ///   - page: start page
+    ///   - perPage: num records per page
+    ///   - completion: The closure called when request is complete
+    ///
+    /// [Read about pagination...](http://strava.github.io/api/#pagination)
     func listClubAdmins(clubId: String, page: Int = 0, perPage: Int = 0, completion: @escaping (StravaResponse<[AthleteSummary]>) -> Void) {
         var req = StravaRequest<AthleteSummary>()
         req.pathComponent = "/clubs/\(clubId)/admins"
@@ -646,6 +699,20 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    /// List club activities
+    ///
+    /// Retrieve the recent activities performed by members of a specific club. 
+    /// The authenticated athlete must be a member of the club. Pagination is supported. 
+    /// However, the results are limited to the last 200 total activities by club members
+    ///
+    /// - Parameters:
+    ///   - clubId: Indicates needed `Club`
+    ///   - before: Result will start with activities whose start date is before this value
+    ///   - page: start page
+    ///   - perPage: num records per page
+    ///   - completion: The closure called when request is complete
+    ///
+    /// [Read about pagination...](http://strava.github.io/api/#pagination)
     func listClubActivities(clubId: String, before: Date? = nil, page: Int = 0, perPage: Int = 0, completion: @escaping (StravaResponse<[ActivitySummary]>) -> Void) {
         var req = StravaRequest<ActivitySummary>()
         req.pathComponent = "/clubs/\(clubId)/activities"
@@ -662,6 +729,16 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    
+    /// Join a club
+    ///
+    /// Join a club on behalf of the authenticated athlete. 
+    /// If the club is private the join will need to be approved 
+    /// by a club admin unless the authenticated athlete had previously been invited to the club. An access token with write permissions is required.
+    ///
+    /// - Parameters:
+    ///   - clubId: Indicates needed `Club`
+    ///   - completion: The closure called when request is complete
     func joinClub(clubId: String, completion: @escaping (StravaResponse<ClubMembership>) -> Void) {
         var req = StravaRequest<ClubMembership>()
         req.pathComponent = "/clubs/\(clubId)/join"
@@ -671,6 +748,14 @@ public extension StravaClient {
         req.requestObject(completion)
     }
     
+    
+    /// Leave a club
+    ///
+    /// Leave a club on behalf of the authenticated user. An access token with write permissions is required
+    ///
+    /// - Parameters:
+    ///   - clubId: Indicates needed `Club`
+    ///   - completion: The closure called when request is complete
     func leaveAClub(clubId: String, completion: @escaping (StravaResponse<ClubMembership>) -> Void) {
         var req = StravaRequest<ClubMembership>()
         req.pathComponent = "/clubs/\(clubId)/leave"
@@ -682,10 +767,17 @@ public extension StravaClient {
     
 }
 
-/*
- Gear
- */
+// MARK: - Gear
 public extension StravaClient {
+    
+    /// Retrieve gear
+    ///
+    /// Retrieve details about a specific item of gear. The requesting athlete must own the gear. 
+    /// At this time it is not possible to view just anyone’s gear type and usage
+    ///
+    /// - Parameters:
+    ///   - gearId: Indicates needed `Gear`
+    ///   - completion: The closure called when request is complete
     func retrieveGear<T: Gear>(gearId: String, completion: @escaping (StravaResponse<T>) -> Void) {
         var req = StravaRequest<T>()
         req.pathComponent = "/gear/\(gearId)"
