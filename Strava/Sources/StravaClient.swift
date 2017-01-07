@@ -877,10 +877,31 @@ public extension StravaClient {
     }
 }
 
-/*
- Streams
- */
+// MARK: - Streams
 public extension StravaClient {
+    
+    /// Retrieve activity streams
+    ///
+    /// Streams represent the raw data of the uploaded file.
+    /// External applications may only access this information for activities owned by the authenticated athlete.
+    ///
+    /// While there are a large number of stream types, they may not exist for all activities. 
+    /// If a stream type does not exist for the activity, it will be ignored.
+    ///
+    /// All streams for a given activity will be the same length and the values at a given index correspond to the same time.
+    /// For example, the time from the time stream can be correlated to the lat/lng or watts streams.
+    ///
+    /// Privacy Zones Stream requests made using a public access_token will be cropped with the user’s privacy zones, 
+    /// regardless if the requesting athlete owns the 
+    /// requested activity. To fetch the complete stream data use an access_token with
+    /// view_private permissions.
+    ///
+    /// - Parameters:
+    ///   - activityId: Indicates `Activity` which Streams you want to retrieve
+    ///   - types: List of `StreamType` objects indicating needed Streams
+    ///   - resolution: Indicates desired number of data points, streams will only be down sampled
+    ///   - seriesType: Relevant only if using resolution either ‘StreamType.time’ or ‘StreamType.distance’, default is ‘StreamType.distance’, used to index the streams if the stream is being reduced
+    ///   - completion: The closure called when request is complete
     func retrieveActivityStreams(activityId: Int64,
                                  types: [StreamType],
                                  resolution: Resolution? = nil,
@@ -901,6 +922,19 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    
+    /// Retrieve effort streams
+    ///
+    /// A `SegmentEffort` represents an attempt on a segment. This resource returns a subset of the activity streams that correspond to that effort.
+    /// All streams for a given segment effort will be the same length and the values at a given index correspond to the same time.
+    /// This resource is available for all public efforts.
+    ///
+    /// - Parameters:
+    ///   - effortId: Indicates `SegmentEffort` which Streams you want to retrieve
+    ///   - types: List of `StreamType` objects indicating needed Streams
+    ///   - resolution: Indicates desired number of data points, streams will only be down sampled
+    ///   - seriesType: Relevant only if using resolution either ‘StreamType.time’ or ‘StreamType.distance’, default is ‘StreamType.distance’, used to index the streams if the stream is being reduced
+    ///   - completion: The closure called when request is complete
     func retrieveEffortStreams(effortId: Int64,
                                  types: [StreamType],
                                  resolution: Resolution? = nil,
@@ -921,6 +955,15 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    
+    /// Retrieve segment streams
+    ///
+    /// - Parameters:
+    ///   - segmentId: Indicates `Segment` which Streams you want to retrieve
+    ///   - types: List of `StreamType` objects indicating needed Streams. Only `StreamType.distance`, `StreamType.altitude` and `StreamType.coordinate` stream types are available.
+    ///   - resolution: Indicates desired number of data points, streams will only be down sampled
+    ///   - seriesType: Relevant only if using resolution either ‘StreamType.time’ or ‘StreamType.distance’, default is ‘StreamType.distance’, used to index the streams if the stream is being reduced
+    ///   - completion: The closure called when request is complete
     func retrieveSegmentStreams(segmentId: Int64,
                                types: [StreamType],
                                resolution: Resolution? = nil,
@@ -941,6 +984,14 @@ public extension StravaClient {
         req.requestArray(completion)
     }
     
+    
+    /// Retrieve route streams
+    ///
+    /// `StreamType.distance`, `StreamType.altitude` and `StreamType.coordinate` stream types are always returned
+    ///
+    /// - Parameters:
+    ///   - routeId: Indicates `Route` which Streams you want to retrieve
+    ///   - completion: The closure called when request is complete
     func retrieveRouteStreams(routeId: Int64, completion: @escaping (StravaResponse<[Stream]>) -> Void) {
         var req = StravaRequest<Stream>()
         req.pathComponent = "/routes/\(routeId)/streams/"
@@ -952,10 +1003,8 @@ public extension StravaClient {
     }
 }
 
-/*
- Uploads
- */
 
+// MARK: - Uploads
 public extension StravaClient {
     /// Upload an activity
     ///
