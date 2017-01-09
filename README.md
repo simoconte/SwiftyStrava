@@ -73,11 +73,12 @@ $ brew install carthage
 To integrate SwiftyStrava into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "limlab/SwiftyStrava"
+github "tristanhimmelman/AlamofireObjectMapper"
+github "Hearst-DD/ObjectMapper"
+github "limlab/SwiftStravaSDK"
 ```
 
 Run `carthage update` to build the framework and drag the built `Strava.framework` into your Xcode project.
-
 
 ## Usage
 
