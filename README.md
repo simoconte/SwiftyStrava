@@ -19,15 +19,18 @@ This project is *not official* Strava library written in Swift. It supports read
 ## Features
 
 - [x] 100% [Strava API](https://strava.github.io/api/) coverage
-- [x] Generate Documentation
 - [x] Most of Strava objects are modelled and ready for convenient usage
 - [x] Networking is incapsulated and all heavy-Strava-lifting is done by the framework. So you can focus on your application functionality
 
 ## TODO
 
+- [ ] Better error handling
+- [ ] Sample application
 - [ ] 100% Documentation coverage
+- [ ] Generate Documentation
 - [ ] Unit Tests
 - [ ] Multiple file/data uploading options
+- [ ] Distribute via [Cocoapods](https://cocoapods.org)
 
 ## Documentation
 
@@ -75,13 +78,56 @@ github "limlab/SwiftyStrava"
 
 Run `carthage update` to build the framework and drag the built `Strava.framework` into your Xcode project.
 
-### Manually
 
 ## Usage
 
-## FAQ
+### OAuth
+1. Read [Strava API Docs (Authentication)](http://strava.github.io/api/v3/oauth/) 
+2. Create your application account
+	2.1. Create or login to your Strava account
+	2.2. Create new application Using [Strava Developers Page](https://www.strava.com/settings/api)
+	2.3. Remember `ClientID`, `Client Secret`
+3. Create new Xcode project
+	3.1 Open Xcode
+	3.2 File -> New -> Project -> Single View Application -> Next
+	3.3 Select some cool name for your project, select *Swift* as main project language. (Why do you need SwiftyStrava otherwise? :))
+	3.4 
+4. Follow the [Installation](#installation) chapter
+5. Open your `AppDelegate` file
+```swift
+// Import framework
+import Strava
 
-## Credits
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+		// ...
+        // Setup `StravaClient`
+        StravaClient.instance.setup(clientId: "<#Your Client Id#>", clientSecret: "<#Your Client Secret#>"")
+        //...
+        return true
+    }
+```
+
+In any other file where you wish to read some Strava data:
+```swift
+// Import framework
+import Strava
+
+// ... 
+func myAmazingFunction() {
+	
+    StravaClient.instance.retrieveAthlete(athleteId: <#Some athletes id#>) { athleteResponse in
+        switch response {
+            case .Success(let athlete):
+                print("Hoorrray! Athlete data received")
+                print(athlete)
+            case .Failure(let err):
+                print("Ouch! Something wrong happened. Probably this: \(err.message)")
+            }
+	}
+}
+```
+6. Read [Strava API Docs](http://strava.github.io/api/v3/), because all the methods in the library are pretty much the same
+7. Do not hesistate to [Communicate](#communication) 
 
 ## License
 
