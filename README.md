@@ -80,6 +80,26 @@ github "limlab/SwiftStravaSDK"
 
 Run `carthage update` to build the framework and drag the built `Strava.framework` into your Xcode project.
 
+### CocoaPods
+
+[CocoaPods](https://cocoapods.org) is a dependency manager for Swift and Objective-C Cocoa projects. CocoaPods is built with Ruby and is installable with the default Ruby available on OS X.
+
+You can install CocoaPods using the following command:
+
+```bash
+$ sudo gem install cocoapods
+```
+Please refer to [official guide](https://guides.cocoapods.org/using/getting-started.html#installation) for more installation instructions.
+
+To integrate SwiftyStrava into your Xcode project using CocoaPods, put these lines into your `Podfile`:
+
+```ogdl
+pod 'AlamofireObjectMapper', '~> 4.0'
+pod 'SwiftyStrava', '~> 0.8'
+```
+
+Run `pod install` to fetch dependencies.
+
 ## Usage
 
 ### OAuth
