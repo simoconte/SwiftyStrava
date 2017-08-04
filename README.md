@@ -122,7 +122,7 @@ import Strava
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		// ...
         // Setup `StravaClient`
-        StravaClient.instance.configure(clientId: "<#Your Client Id#>", clientSecret: "<#Your Client Secret#>", callbackURL:"yourConfiguredCallbackURL")
+        StravaClient.instance.configure(clientId: <#Your Client Id#> (as a UInt64), clientSecret: "<#Your Client Secret#>", callbackURL:"yourConfiguredCallbackURL")
         //...
         return true
     }
