@@ -13,5 +13,5 @@ Pod::Spec.new do |s|
   s.source = { :git => 'https://github.com/limlab/SwiftyStrava.git', :tag => s.version }
   s.source_files = 'Sources/*'
   s.ios.deployment_target = '9.0'
-  s.dependency 'AlamofireObjectMapper', '~> 4.0'
+  s.dependency 'AlamofireObjectMapper'
 end
